@@ -39,17 +39,3 @@ const GroupHeader = styled.div`
   
 `;
 
-const Activities = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:center;
-`;
-
-const IconContainer = styled.div`
-  cursor: pointer;
-  color: gray;
-  font-size: 16px;
-  display:flex;
-  align-items:center;
-  display: flex;
-`;
