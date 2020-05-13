@@ -21,7 +21,7 @@ export default function Navbar() {
 }
 
 const Container = styled.div`
-    background-color: #212529;
+    background-color: #343a40;
     color: white;
     font-size: 16px;
     padding: 8px 16px;

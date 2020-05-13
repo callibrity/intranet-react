@@ -2,10 +2,10 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Route, Switch, BrowserRouter} from 'react-router-dom'
-import Homepage from './Components/Homepage'
-import People from './Components/People'
-import Wiki from './Components/Wiki'
-import Navbar from './Components/Navbar'
+import Homepage from './components/Homepage'
+import People from './components/People'
+import Wiki from './components/Wiki'
+import Navbar from './components/Navbar'
 
 function App() {
   return (
