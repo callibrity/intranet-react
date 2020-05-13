@@ -1,15 +1,23 @@
 import React from 'react';
+import Section from './home/Section';
 import Calendar from './home/Calendar';
 import styled from 'styled-components';
 
 export default function Homepage() {
     return(
         <Container>
-            <Calendar />
+            <Section label="Announcements" color="#663399">
+                <div>text</div>
+            </Section>
+            <Section label="Calendar" color="#32CD32">
+                <Calendar />
+            </Section>
         </Container>
     )
 }
 
 const Container = styled.div`
     display: flex;
+    flex-direction: column;
+    margin: 50px;
 `;
