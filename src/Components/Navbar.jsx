@@ -17,7 +17,7 @@ export default function Navbar() {
         <IconContainer>
           <FaSearch />
         </IconContainer>
-        <Search placeHolder="Search" value={text} onChange={(e) => { setText(e.target.value); }} />
+        <Search alt="search bar" value={text} onChange={(e) => { setText(e.target.value); }} />
       </SearchContainer>
       <NavLinks />
     </Container>
