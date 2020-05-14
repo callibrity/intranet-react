@@ -1,13 +1,12 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export default function Calendar({day}) {
-
-    return(
-        <Container>
-            <Label>{day}</Label>
-        </Container>
-    )
+export default function Calendar({ day }) {
+  return (
+    <Container>
+      <Label>{day}</Label>
+    </Container>
+  );
 }
 
 const Container = styled.div`

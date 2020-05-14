@@ -1,28 +1,27 @@
-import React, {useState} from 'react';
-import {FaSearch} from 'react-icons/fa'
-import styled from 'styled-components'
-import NavLinks from './NavLinks'
-import {Link} from 'react-router-dom'
+import React, { useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
+import styled from 'styled-components';
+import NavLinks from './NavLinks';
+import { Link } from 'react-router-dom';
 
 
 export default function Navbar() {
-    
-    const [text, setText] = useState()
+  const [text, setText] = useState();
 
-    return(
-        <Container>
-            <Link to="/">
-              <Logo src="https://www.callibrity.com/hubfs/Callibrity_December2018%20Theme/Images/callibrity-logo.png" alt="Callibrity Logo"/>
-            </Link>
-            <SearchContainer>
-                <IconContainer>
-                    <FaSearch />
-                </IconContainer>
-                <Search placeHolder='Search' value={text} onChange={(e) => {setText(e.target.value)}} ></Search>
-            </SearchContainer>
-            <NavLinks />
-        </Container>
-    )
+  return (
+    <Container>
+      <Link to="/">
+        <Logo src="https://www.callibrity.com/hubfs/Callibrity_December2018%20Theme/Images/callibrity-logo.png" alt="Callibrity Logo" />
+      </Link>
+      <SearchContainer>
+        <IconContainer>
+          <FaSearch />
+        </IconContainer>
+        <Search placeHolder="Search" value={text} onChange={(e) => { setText(e.target.value); }} />
+      </SearchContainer>
+      <NavLinks />
+    </Container>
+  );
 }
 
 const Container = styled.div`
@@ -32,11 +31,11 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center; 
-`
+`;
 
 const Logo = styled.img`
     width: 132px;
-`
+`;
 
 const SearchContainer = styled.div`
     display: flex;
@@ -49,7 +48,7 @@ const SearchContainer = styled.div`
     border-color: #bbbbbb #cfcfcf #e0e0e0 #cfcfcf;
     border-radius: 3px;
     padding: 5px;
-`
+`;
 
 const IconContainer = styled.div``;
 

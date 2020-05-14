@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 // Component
 export default function Section({ label, color, children }) {
-
   return (
     <Container>
       <GroupHeader color={color}>
@@ -29,7 +28,7 @@ const GroupHeader = styled.div`
   display: flex;
   font-size: 25px;
   font-weight: 500;
-  border-bottom: 1px solid ${({color}) => color};
+  border-bottom: 1px solid ${({ color }) => color};
   margin-bottom: 10px;
 
   
@@ -38,4 +37,3 @@ const GroupHeader = styled.div`
   };
   
 `;
-
