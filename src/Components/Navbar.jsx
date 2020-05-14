@@ -12,7 +12,7 @@ export default function Navbar() {
     return(
         <Container>
             <Link to="/">
-              <Logo src="https://www.callibrity.com/hubfs/Callibrity_December2018%20Theme/Images/callibrity-logo.png" />
+              <Logo src="https://www.callibrity.com/hubfs/Callibrity_December2018%20Theme/Images/callibrity-logo.png" alt="Callibrity Logo"/>
             </Link>
             <SearchContainer>
                 <IconContainer>
