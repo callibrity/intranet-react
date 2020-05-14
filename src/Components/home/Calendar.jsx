@@ -6,6 +6,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
+import './calendar.css';
 
 
 export default function Calendar() {
