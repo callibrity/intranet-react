@@ -1,18 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import App from './App';
-
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
-
-test('renders sections', () => {
-  const { queryByText } = render(<App />);
-  const announcementElement = queryByText(/announcements/i);
-  const calendarElement = queryByText(/calendar/i);
-  expect(announcementElement).toBeInTheDocument();
-  expect(calendarElement).toBeInTheDocument();
-});
+import App from '../App';
 
 test('full app rendering/navigating', () => {
   const { queryByText, getByText, getByAltText } = render(<App />);
@@ -56,11 +44,3 @@ test('full app rendering/navigating', () => {
   expect(wikiElement).not.toBeInTheDocument();
   expect(peopleElement).not.toBeInTheDocument();
 });
-
-test('calendar functionality', () => {
-  const { queryByText } = render(<App />);
-  const date = new Date();
-  const monthElement = queryByText(`${monthNames[date.getMonth()]} ${date.getFullYear()}`);
-  expect(monthElement).toBeInTheDocument();
-});
-

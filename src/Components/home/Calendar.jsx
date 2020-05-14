@@ -1,60 +1,30 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import CalendarDay from './CalendarDay';
-import getCalendar from './getCalendar';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import React from 'react';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
 
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
+import "@fullcalendar/core/main.css";
+import "@fullcalendar/daygrid/main.css";
+import "@fullcalendar/timegrid/main.css";
+import './calendar.css';
+
 
 export default function Calendar() {
-  const [date, setDate] = useState(new Date());
-  const calendarList = getCalendar(date.getFullYear(), date.getMonth());
-  const list = calendarList.map((ele, i) => <CalendarDay day={ele} key={i} />);
-
   return (
-    <Container>
-      <DateContainer>
-        <TodayButton onClick={() => setDate(new Date())}>
-          Today
-        </TodayButton>
-        <ChangeDate>
-          <FaChevronLeft onClick={() => setDate(new Date(date.getFullYear(), date.getMonth() - 1, 1))} />
-          <FaChevronRight onClick={() => setDate(new Date(date.getFullYear(), date.getMonth() + 1, 1))} />
-        </ChangeDate>
-        <DateDisplay>
-          {`${monthNames[date.getMonth()]} ${date.getFullYear()}`}
-        </DateDisplay>
-      </DateContainer>
-      <MonthContainer>
-        {list}
-      </MonthContainer>
-    </Container>
+    <FullCalendar
+      defaultView="dayGridMonth"
+      plugins={[dayGridPlugin, timeGridPlugin]}
+      events={[
+        { title: 'event 1', start: '2020-05-01', end: '2020-05-04' },
+        { title: 'event 2', start: '2020-05-03', end: '2020-05-06' },
+        { title: 'event 3', start: '2020-05-03', end: '2020-05-06' },
+        { title: 'event 4', start: '2020-05-03', end: '2020-05-06' },
+      ]}
+      header={{
+        left: "prev,next today",
+        center: "title",
+        right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+      }}
+    />
   );
 }
-
-const Container = styled.div`
-
-`;
-
-const MonthContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(7, 200px);
-    grid-template-rows: repeat(5, 120px);
-    grid-gap: 1px;
-    background-color: gray;
-    padding: 1px;
-`;
-
-const DateContainer = styled.div`
-    display: flex;
-    width: 300px;
-    justify-content: space-between;
-`;
-
-const TodayButton = styled.div``;
-
-const ChangeDate = styled.div``;
-
-const DateDisplay = styled.div``;

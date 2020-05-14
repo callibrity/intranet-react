@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    "plugin:jest/recommended"
   ],
   globals: {
     Atomics: 'readonly',
@@ -21,6 +22,7 @@ module.exports = {
   parser: "babel-eslint",
   plugins: [
     'react',
+    'jest'
   ],
   rules: {
     'linebreak-style': "off",

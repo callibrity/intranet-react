@@ -11,13 +11,13 @@ export default function Navbar() {
   return (
     <Container>
       <Link to="/">
-        <Logo src="https://www.callibrity.com/hubfs/Callibrity_December2018%20Theme/Images/callibrity-logo.png" alt="Callibrity Logo" />
+        <Logo src="callibrity-logo.webp" alt="Callibrity Logo" />
       </Link>
       <SearchContainer>
         <IconContainer>
           <FaSearch />
         </IconContainer>
-        <Search placeHolder="Search" value={text} onChange={(e) => { setText(e.target.value); }} />
+        <Search alt="search bar" value={text} onChange={(e) => { setText(e.target.value); }} />
       </SearchContainer>
       <NavLinks />
     </Container>
@@ -41,7 +41,7 @@ const SearchContainer = styled.div`
     display: flex;
     align-items: center;
     background-color: white;
-    width: 600px;
+    width: 40%;
     height: 25px;
     justify-content: left;
     box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);
