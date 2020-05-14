@@ -21,6 +21,7 @@ module.exports = {
   parser: "babel-eslint",
   plugins: [
     'react',
+    'jest'
   ],
   rules: {
     'linebreak-style': "off",
