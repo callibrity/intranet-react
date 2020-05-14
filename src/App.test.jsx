@@ -56,10 +56,3 @@ test('full app rendering/navigating', () => {
   expect(wikiElement).not.toBeInTheDocument();
   expect(peopleElement).not.toBeInTheDocument();
 });
-
-test('calendar functionality', () => {
-  const { queryByText } = render(<App />);
-  const date = new Date();
-  const monthElement = queryByText(`${monthNames[date.getMonth()]} ${date.getFullYear()}`);
-  expect(monthElement).toBeInTheDocument();
-});
