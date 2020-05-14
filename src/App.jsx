@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
-import {Route, Switch, BrowserRouter} from 'react-router-dom'
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import 'typeface-roboto';
 import Navbar from './Components/Navbar';
 import Homepage from './Components/Homepage';
 import People from './Components/People';
