@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <Container>
       <Link to="/">
-        <Logo src="../images/callibrity-logo.webp" alt="Callibrity Logo" />
+        <Logo src="callibrity-logo.webp" alt="Callibrity Logo" />
       </Link>
       <SearchContainer>
         <IconContainer>
@@ -41,7 +41,7 @@ const SearchContainer = styled.div`
     display: flex;
     align-items: center;
     background-color: white;
-    width: 600px;
+    width: 40%;
     height: 25px;
     justify-content: left;
     box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);
