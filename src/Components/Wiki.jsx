@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Wiki() {
-    return(
-        <div>Wiki Check</div>
-    )
+  return (
+    <div>Wiki Check</div>
+  );
 }
