@@ -12,7 +12,8 @@ export default function Homepage() {
         setText(res.data);
       })
       .catch((err) => {
-        setText(err);
+        console.log(err);
+        setText('Could not retrieve announcements');
       });
   }, []);
 
