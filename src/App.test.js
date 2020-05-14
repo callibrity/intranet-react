@@ -63,4 +63,3 @@ test('calendar functionality', () => {
   const monthElement = queryByText(`${monthNames[date.getMonth()]} ${date.getFullYear()}`);
   expect(monthElement).toBeInTheDocument();
 });
-

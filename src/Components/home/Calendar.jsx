@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import CalendarDay from './CalendarDay';
 import getCalendar from './getCalendar';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+/*
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+*/
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
