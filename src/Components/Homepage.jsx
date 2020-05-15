@@ -4,31 +4,38 @@ import styled from 'styled-components';
 import Section from './home/Section';
 import Calendar from './home/Calendar';
 
+export function createAnnouncementsList(text) {
+  const typeCheck = typeof text === 'string';
+  if (typeCheck) {
+    return text;
+  }
+
+  return text.map((ele) => (
+    <Text>
+      {`${ele.date}: ${ele.event}`}
+    </Text>
+  ));
+}
+
 export default function Homepage() {
-  const [text, setText] = useState('Loading');
+  const [announcements, setAnnouncements] = useState('Loading');
   useEffect(() => {
     API.get('/announcements')
       .then((res) => {
-        setText(res.data);
+        setAnnouncements(res.data);
       })
       .catch((err) => {
         console.log(err);
-        setText('Could not retrieve announcements');
+        setAnnouncements('Could not retrieve announcements');
       });
   }, []);
 
-  const announcements = typeof text === 'string'
-    ? text
-    : text.map((ele) => (
-      <Text>
-        {`${ele.date}: ${ele.event}`}
-      </Text>
-    ));
+  const announcementsList = createAnnouncementsList(announcements);
 
   return (
     <Container>
       <Section label="Announcements" color="#663399">
-        {announcements}
+        {announcementsList}
       </Section>
       <Section label="Calendar" color="#32CD32">
         <Calendar />
