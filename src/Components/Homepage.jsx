@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import API from '../api';
 import styled from 'styled-components';
-import axios from 'axios';
 import Section from './home/Section';
 import Calendar from './home/Calendar';
 
 export default function Homepage() {
   const [text, setText] = useState('Loading');
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/announcements`)
+    API.get('/announcements')
       .then((res) => {
         setText(res.data);
       })

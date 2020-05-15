@@ -1,4 +1,5 @@
 import React from 'react';
+import API from '../../api';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -21,7 +22,14 @@ export default function Calendar() {
     <FullCalendar
       defaultView="dayGridMonth"
       plugins={[dayGridPlugin, timeGridPlugin]}
-      eventSources={[`${process.env.REACT_APP_API_URL}/calendar`, testEvents]}
+      eventSources={[
+        (info, successCallback) => {
+          API.get(`/calendar?start=${info.start}&end=${info.end}`)
+            .then((res) => successCallback(res.data))
+            .catch((err) => console.log(err));
+        },
+        testEvents
+      ]}
       header={{
         left: "prev,next today",
         center: "title",
