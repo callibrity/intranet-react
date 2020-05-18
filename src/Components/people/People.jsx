@@ -16,7 +16,7 @@ function renderPeople() {
 
 export default function People() {
   return (
-    <div className="container">
+    <div className="container" data-testid="people-page">
       <div className="row justify-content-center">
         {renderPeople()}
       </div>
