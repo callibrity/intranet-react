@@ -1,0 +1,24 @@
+.tile {
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+}
+
+.tile-overlay {
+  position: absolute;
+  width: 250px;
+  bottom: -1px;
+  margin-left: -1px;
+  background-color: lightblue;
+  text-align: center;
+  padding: 5px;
+  font-size: small;
+  border-bottom-left-radius: .25rem;
+  border-bottom-right-radius: .25rem;
+}
+
+.tile-overlay-name {
+  display: inline-block;
+  font-size: large;
+  padding-bottom: 5px;
+}
