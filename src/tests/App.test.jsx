@@ -7,11 +7,7 @@ test('full app rendering/navigating', () => {
   let announcementElement = queryByText(/announcements/i);
   let calendarElement = queryByText(/calendar/i);
   let wikiElement = queryByText(/wiki check/i);
-<<<<<<< HEAD
-  let peopleElement = queryByText(/alec/i);
-=======
   let peopleElement = queryByTestId(/people-page/i);
->>>>>>> 29fb151bfe129cc39ceff422029d412886c2ec39
 
   expect(announcementElement).toBeInTheDocument();
   expect(calendarElement).toBeInTheDocument();
@@ -22,11 +18,7 @@ test('full app rendering/navigating', () => {
   announcementElement = queryByText(/announcements/i);
   calendarElement = queryByText(/calendar/i);
   wikiElement = queryByText(/wiki check/i);
-<<<<<<< HEAD
-  peopleElement = queryByText(/alec/i);
-=======
   peopleElement = queryByTestId(/people-page/i);
->>>>>>> 29fb151bfe129cc39ceff422029d412886c2ec39
   expect(announcementElement).not.toBeInTheDocument();
   expect(calendarElement).not.toBeInTheDocument();
   expect(wikiElement).toBeInTheDocument();
@@ -36,11 +28,7 @@ test('full app rendering/navigating', () => {
   announcementElement = queryByText(/announcements/i);
   calendarElement = queryByText(/calendar/i);
   wikiElement = queryByText(/wiki check/i);
-<<<<<<< HEAD
-  peopleElement = queryByText(/alec/i);
-=======
   peopleElement = queryByTestId(/people-page/i);
->>>>>>> 29fb151bfe129cc39ceff422029d412886c2ec39
   expect(announcementElement).not.toBeInTheDocument();
   expect(calendarElement).not.toBeInTheDocument();
   expect(wikiElement).not.toBeInTheDocument();
@@ -50,11 +38,7 @@ test('full app rendering/navigating', () => {
   announcementElement = queryByText(/announcements/i);
   calendarElement = queryByText(/calendar/i);
   wikiElement = queryByText(/wiki check/i);
-<<<<<<< HEAD
-  peopleElement = queryByText(/alec/i);
-=======
   peopleElement = queryByTestId(/people-page/i);
->>>>>>> 29fb151bfe129cc39ceff422029d412886c2ec39
   expect(announcementElement).toBeInTheDocument();
   expect(calendarElement).toBeInTheDocument();
   expect(wikiElement).not.toBeInTheDocument();
