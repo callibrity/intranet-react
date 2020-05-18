@@ -1,8 +1,7 @@
 import React from 'react';
 import './PersonTile.css';
 
-export default function PersonTile(props) {
-  const { name, role, photo } = props;
+export default function PersonTile({ name, role, photo }) {
   return (
     <div className="card tile">
       <img className="card-img-top" src={photo} alt={name} />

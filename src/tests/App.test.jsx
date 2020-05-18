@@ -7,7 +7,7 @@ test('full app rendering/navigating', () => {
   let announcementElement = queryByText(/announcements/i);
   let calendarElement = queryByText(/calendar/i);
   let wikiElement = queryByText(/wiki check/i);
-  let peopleElement = queryByText(/people check/i);
+  let peopleElement = queryByText(/alec/i);
 
   expect(announcementElement).toBeInTheDocument();
   expect(calendarElement).toBeInTheDocument();
@@ -18,7 +18,7 @@ test('full app rendering/navigating', () => {
   announcementElement = queryByText(/announcements/i);
   calendarElement = queryByText(/calendar/i);
   wikiElement = queryByText(/wiki check/i);
-  peopleElement = queryByText(/people check/i);
+  peopleElement = queryByText(/alec/i);
   expect(announcementElement).not.toBeInTheDocument();
   expect(calendarElement).not.toBeInTheDocument();
   expect(wikiElement).toBeInTheDocument();
@@ -28,7 +28,7 @@ test('full app rendering/navigating', () => {
   announcementElement = queryByText(/announcements/i);
   calendarElement = queryByText(/calendar/i);
   wikiElement = queryByText(/wiki check/i);
-  peopleElement = queryByText(/people check/i);
+  peopleElement = queryByText(/alec/i);
   expect(announcementElement).not.toBeInTheDocument();
   expect(calendarElement).not.toBeInTheDocument();
   expect(wikiElement).not.toBeInTheDocument();
@@ -38,7 +38,7 @@ test('full app rendering/navigating', () => {
   announcementElement = queryByText(/announcements/i);
   calendarElement = queryByText(/calendar/i);
   wikiElement = queryByText(/wiki check/i);
-  peopleElement = queryByText(/people check/i);
+  peopleElement = queryByText(/alec/i);
   expect(announcementElement).toBeInTheDocument();
   expect(calendarElement).toBeInTheDocument();
   expect(wikiElement).not.toBeInTheDocument();
