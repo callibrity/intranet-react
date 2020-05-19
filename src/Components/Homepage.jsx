@@ -4,6 +4,9 @@ import styled from "styled-components";
 import Section from "./home/Section";
 import Calendar from "./home/Calendar";
 
+export const announcementsRejection = "Could not retrieve announcements";
+export const initialAnnouncement = "Loading";
+
 export function createAnnouncementsList(text) {
   const typeCheck = typeof text === "string";
   if (typeCheck) {
@@ -18,15 +21,15 @@ export function createAnnouncementsList(text) {
 }
 
 export default function Homepage() {
-  const [announcements, setAnnouncements] = useState("Loading");
+  const [announcements, setAnnouncements] = useState(initialAnnouncement);
   useEffect(() => {
     API.get("/announcements")
       .then((res) => {
         setAnnouncements(res.data);
       })
       .catch((err) => {
-        console.log(err);
-        setAnnouncements("Could not retrieve announcements");
+        console.log("error");
+        setAnnouncements(announcementsRejection);
       });
   }, []);
 
