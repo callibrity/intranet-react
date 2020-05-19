@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { FaSearch } from 'react-icons/fa';
-import styled from 'styled-components';
-import NavLinks from './NavLinks';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import styled from "styled-components";
+import NavLinks from "./NavLinks";
+import { Link } from "react-router-dom";
 
 
 export default function Navbar() {
-  const [text, setText] = useState();
+  const [text, setText] = useState("");
 
   return (
     <Container>
@@ -25,7 +25,7 @@ export default function Navbar() {
 }
 
 const Container = styled.div`
-    background-color: #343a40;
+    background-color: ${({theme: {darkerBlue}}) => darkerBlue};
     font-size: 16px;
     padding: 8px 16px;
     display: flex;

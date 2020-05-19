@@ -1,45 +1,43 @@
 module.exports = {
-  env: {
-    browser: true,
-    es6: true,
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
   },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb',
-    "plugin:jest/recommended"
-  ],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+  "extends": ["eslint:recommended", "react-app", "plugin:react/recommended"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
   },
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    ecmaVersion: 2018,
-    sourceType: 'module',
+    "ecmaVersion": 2018,
+    "sourceType": "module"
   },
-  parser: "babel-eslint",
-  plugins: [
-    'react',
-    'jest'
-  ],
-  rules: {
-    'linebreak-style': "off",
-    "import/named" : "off",
-    "strict":0,
-    "react/prop-types":"off",
-    'max-len': 'off',
-    'radix': 'off',
-    'comma-dangle': 'off',
-    'quote-props' : 'off',
-    'quotes' : 'off',
-    'object-curly-newline': 'off',
-    'import/order': 'off',
-    'import/first': 'off',
-    'import/newline-after-import': 'off',
-    'no-trailing-spaces': 'off',
-    'no-plusplus': 'off',
-    'react/jsx-one-expression-per-line': 'off'
+  "plugins": ["react", "jest"],
+  "rules": {
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "no-console": ["warn"],
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "react/jsx-uses-react": 1,
+    "react/prop-types": 0,
+    "jest/expect-expect": "error",
+    "jest/valid-expect": "error",
+    "jest/no-disabled-tests": "error",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/no-truthy-falsy": "error",
+    "jest/no-test-prefixes": "error",
+    "jest/prefer-hooks-on-top": "warn",
+    "jest/no-commented-out-tests": "error"
   },
-};
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

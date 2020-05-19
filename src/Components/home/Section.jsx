@@ -1,6 +1,6 @@
 // Package dependencies
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 // Component
 export default function Section({ label, color, children }) {
@@ -28,7 +28,7 @@ const GroupHeader = styled.div`
   display: flex;
   font-size: 25px;
   font-weight: 500;
-  border-bottom: 1px solid ${({ color }) => color};
+  border-bottom: 1px solid ${({theme, color}) => theme[color]};
   margin-bottom: 10px;
 
   

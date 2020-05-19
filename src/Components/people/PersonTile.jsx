@@ -1,5 +1,5 @@
-import React from 'react';
-import './PersonTile.css';
+import React from "react";
+import "./PersonTile.css";
 
 export default function PersonTile({ name, role, photo }) {
   return (

@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import API from '../api';
-import styled from 'styled-components';
-import Section from './home/Section';
-import Calendar from './home/Calendar';
+import React, { useState, useEffect } from "react";
+import API from "../api";
+import styled from "styled-components";
+import Section from "./home/Section";
+import Calendar from "./home/Calendar";
 
 export function createAnnouncementsList(text) {
-  const typeCheck = typeof text === 'string';
+  const typeCheck = typeof text === "string";
   if (typeCheck) {
     return text;
   }
 
   return text.map((ele) => (
-    <Text>
+    <Text key={ele.date}>
       {`${ele.date}: ${ele.event}`}
     </Text>
   ));
 }
 
 export default function Homepage() {
-  const [announcements, setAnnouncements] = useState('Loading');
+  const [announcements, setAnnouncements] = useState("Loading");
   useEffect(() => {
-    API.get('/announcements')
+    API.get("/announcements")
       .then((res) => {
         setAnnouncements(res.data);
       })
       .catch((err) => {
         console.log(err);
-        setAnnouncements('Could not retrieve announcements');
+        setAnnouncements("Could not retrieve announcements");
       });
   }, []);
 
@@ -34,10 +34,10 @@ export default function Homepage() {
 
   return (
     <Container>
-      <Section label="Announcements" color="#663399">
+      <Section label="Announcements" color='green'>
         {announcementsList}
       </Section>
-      <Section label="Calendar" color="#32CD32">
+      <Section label="Calendar" color='orange'>
         <Calendar />
       </Section>
     </Container>
