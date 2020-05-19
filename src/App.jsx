@@ -7,6 +7,7 @@ import Navbar from "./Components/Navbar";
 import Homepage from "./Components/Homepage";
 import People from "./Components/people/People";
 import Wiki from "./Components/Wiki";
+import Login from "./Components/Login";
 import theme from "./theme";
 
 const GlobalStyle = createGlobalStyle`
@@ -67,6 +68,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Homepage} />
+          <Route path="/login" component={Login} />
           <Route path="/wiki" component={Wiki} />
           <Route path="/people" component={People} />
         </Switch>
