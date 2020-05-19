@@ -35,8 +35,9 @@ test("rejected announcements call", async () => {
 test("successful announcements call", async () => {
   API.get.mockResolvedValue(mockAnnouncementsResponse);
   const {getByText} = render(<Announcements />);
+  const {date, event} = mockAnnouncementsResponse.data[1];
 
-  await wait(() => expect(getByText(/Alex, Alex, and Alec confused everyone with their names/i)).toBeInTheDocument());
+  await wait(() => expect(getByText(`${date}: ${event}`)).toBeInTheDocument());
 
   expect(API.get.mock.calls.length).toEqual(2);
 });
