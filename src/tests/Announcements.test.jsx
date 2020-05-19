@@ -1,8 +1,8 @@
 // users.test.js
 import React from "react";
 import API from "../api";
-import Homepage, {announcementsRejection, initialAnnouncement} from "../Components/Homepage";
-import { render, fireEvent, cleanup, wait } from "@testing-library/react";
+import Announcements, {announcementsRejection, initialAnnouncement} from "../Components/home/Announcements";
+import { render, wait } from "@testing-library/react";
 
 jest.mock("../api");
 
@@ -23,20 +23,20 @@ const mockAnnouncementsResponse = {data: [
 
 test("rejected announcements call", async () => {
   API.get.mockRejectedValue();
-  const {queryByText} = render(<Homepage />);
+  const {queryByText} = render(<Announcements />);
 
   expect(queryByText(initialAnnouncement)).toBeInTheDocument();
 
   await wait(() => expect(queryByText(announcementsRejection)).toBeInTheDocument());
 
-  expect(API.get.mock.calls.length).toEqual(2);
+  expect(API.get.mock.calls.length).toEqual(1);
 });
 
 test("successful announcements call", async () => {
   API.get.mockResolvedValue(mockAnnouncementsResponse);
-  const {getByText} = render(<Homepage />);
+  const {getByText} = render(<Announcements />);
 
   await wait(() => expect(getByText(/Alex, Alex, and Alec confused everyone with their names/i)).toBeInTheDocument());
 
-  expect(API.get.mock.calls.length).toEqual(4);
+  expect(API.get.mock.calls.length).toEqual(2);
 });
