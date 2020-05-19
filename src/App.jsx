@@ -1,14 +1,13 @@
-import React from 'react';
-import './App.css';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'styled-normalize';
-import 'typeface-roboto';
-import Navbar from './Components/Navbar';
-import Homepage from './Components/Homepage';
-import People from './Components/people/People';
-import Wiki from './Components/Wiki';
-
+import React from "react";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { normalize } from "styled-normalize";
+import "typeface-roboto";
+import Navbar from "./Components/Navbar";
+import Homepage from "./Components/Homepage";
+import People from "./Components/people/People";
+import Wiki from "./Components/Wiki";
+import theme from "./theme";
 
 const GlobalStyle = createGlobalStyle`
  ${normalize}
@@ -62,15 +61,17 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   return (
-    <BrowserRouter>
-      <GlobalStyle />
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={Homepage} />
-        <Route path="/wiki" component={Wiki} />
-        <Route path="/people" component={People} />
-      </Switch>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <GlobalStyle />
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Homepage} />
+          <Route path="/wiki" component={Wiki} />
+          <Route path="/people" component={People} />
+        </Switch>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

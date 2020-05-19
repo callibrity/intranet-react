@@ -1,8 +1,8 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import App from '../App';
+import React from "react";
+import { render, fireEvent } from "@testing-library/react";
+import App from "../App";
 
-test('full app rendering/navigating', () => {
+test("full app rendering/navigating", () => {
   const { queryByText, getByText, getByAltText, queryByTestId } = render(<App />);
   let announcementElement = queryByText(/announcements/i);
   let calendarElement = queryByText(/calendar/i);

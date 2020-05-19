@@ -1,19 +1,19 @@
-import React from 'react';
-import API from '../../api';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
+import React from "react";
+import API from "../../api";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
 
 import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
-import './calendar.css';
+import "./calendar.css";
 
 const testEvents = [
-  { title: 'url test', start: '2020-05-10', end: '2020-05-17', url: 'https://www.callibrity.com/' },
-  { title: 'background color test', start: '2020-05-10', end: '2020-05-17', backgroundColor: 'red' },
-  { title: 'border color test', start: '2020-05-10', end: '2020-05-17', borderColor: 'red' },
-  { title: 'text color test', start: '2020-05-10', end: '2020-05-17', textColor: 'red' }
+  { title: "url test", start: "2020-05-10", end: "2020-05-17", url: "https://www.callibrity.com/" },
+  { title: "background color test", start: "2020-05-10", end: "2020-05-17", backgroundColor: "red" },
+  { title: "border color test", start: "2020-05-10", end: "2020-05-17", borderColor: "red" },
+  { title: "text color test", start: "2020-05-10", end: "2020-05-17", textColor: "red" }
 ];
 
 const calendarHeader = {

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import tempData from './TempPeople.json';
-import PersonTile from './PersonTile';
+import tempData from "./TempPeople.json";
+import PersonTile from "./PersonTile";
 
 function renderPeople() {
   return tempData.map(({ photo, name, role }) => (

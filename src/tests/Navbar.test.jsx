@@ -1,10 +1,10 @@
-import React from 'react';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
-import { render, fireEvent } from '@testing-library/react';
-import Navbar from '../Components/Navbar';
+import React from "react";
+import { Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
+import { render, fireEvent } from "@testing-library/react";
+import Navbar from "../Components/Navbar";
 
-test('navbar rendering and search bar', () => {
+test("navbar rendering and search bar", () => {
   const history = createMemoryHistory();
   const { queryByAltText, queryByText } = render(<Router history={history}><Navbar /></Router>);
   const logo = queryByAltText(/Callibrity Logo/i);
