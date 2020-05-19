@@ -6,7 +6,7 @@ import { normalize } from 'styled-normalize';
 import 'typeface-roboto';
 import Navbar from './Components/Navbar';
 import Homepage from './Components/Homepage';
-import People from './Components/People';
+import People from './Components/people/People';
 import Wiki from './Components/Wiki';
 
 
