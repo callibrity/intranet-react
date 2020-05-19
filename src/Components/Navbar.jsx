@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 export default function Navbar() {
-  const [text, setText] = useState();
+  const [text, setText] = useState("");
 
   return (
     <Container>
