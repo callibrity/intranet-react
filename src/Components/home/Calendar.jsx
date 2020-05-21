@@ -3,6 +3,8 @@ import API from "../../api";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
+import googleCalendarPlugin from "@fullcalendar/google-calendar";
+import interactionPlugin from "@fullcalendar/interaction";
 
 import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
@@ -30,11 +32,21 @@ export function calendarCall(info, successCallback) {
 
 export default function Calendar() {
   return (
-    <FullCalendar
-      defaultView="dayGridMonth"
-      plugins={[dayGridPlugin, timeGridPlugin]}
-      eventSources={[calendarCall, testEvents]}
-      header={calendarHeader}
-    />
+    <div onClick={(e) => e.preventDefault()}>
+      <FullCalendar
+        defaultView="dayGridMonth"
+        plugins={[dayGridPlugin, timeGridPlugin, googleCalendarPlugin, interactionPlugin]}
+        googleCalendarApiKey='AIzaSyBREtcqxmgY2SbJB5ddscMlKpWrHM0R1JM'
+        events={{googleCalendarId: "q2o6gp4ogd31rls2q7sqvl5nps@group.calendar.google.com"}}
+        header={calendarHeader}
+        eventRender={(info) => {
+          var node = document.createElement("LI");
+          var textnode = document.createTextNode("Water");
+          node.appendChild(textnode);
+          info.el.appendChild(node);
+          info.el.appendChild(<div>Hello</div>);
+        }}
+      />
+    </div>
   );
 }
