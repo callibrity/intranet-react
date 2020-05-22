@@ -41,7 +41,6 @@ export default function Calendar() {
       events={{googleCalendarId: "q2o6gp4ogd31rls2q7sqvl5nps@group.calendar.google.com"}}
       header={calendarHeader}
       eventDataTransform={(info) => {
-        console.log(info);
         info.url = undefined;
       }}
       eventRender={(info) => {
