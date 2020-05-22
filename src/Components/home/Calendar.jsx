@@ -5,6 +5,8 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import googleCalendarPlugin from "@fullcalendar/google-calendar";
 import interactionPlugin from "@fullcalendar/interaction";
+import tippy from "tippy.js";
+import "tippy.js/dist/tippy.css";
 import {darkOrange, darkBlue, darkGreen } from "../../theme";
 
 
@@ -39,29 +41,24 @@ export default function Calendar() {
       events={{googleCalendarId: "q2o6gp4ogd31rls2q7sqvl5nps@group.calendar.google.com"}}
       header={calendarHeader}
       eventDataTransform={(info) => {
+        console.log(info);
         info.url = undefined;
       }}
       eventRender={(info) => {
         const {location, description} = info.event.extendedProps;
         info.el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        let node;
-        let textnode;
-        if(location){
-          node = document.createElement("div");
-          textnode = document.createTextNode(`Location: ${location}`);
-          node.appendChild(textnode);
-          info.el.appendChild(node);
-        }
-        if(description){
-          if(description[0] === "<"){
-            info.el.insertAdjacentHTML("beforeend", `Link: ${description}`);
-          } else{
-            node = document.createElement("div");
-            textnode = document.createTextNode(`Description: ${description}`);
-            node.appendChild(textnode);
-            info.el.appendChild(node);
-          }
-        }
+        info.el.setAttribute("data-tippy-content", `<strong>Location</strong>: ${location} <strong>Description</strong>: ${description}`); 
+        tippy(info.el, {
+          allowHTML: true,
+          trigger: "click",
+          arrow: true,
+          duration: 500,
+          interactive: true,
+          interactiveBorder: 30,
+          maxWidth: 500,
+          placement: "bottom",
+          appendTo: document.body
+        });
       }}
     />
   );
