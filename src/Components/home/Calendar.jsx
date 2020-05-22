@@ -5,6 +5,8 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import googleCalendarPlugin from "@fullcalendar/google-calendar";
 import interactionPlugin from "@fullcalendar/interaction";
+import {darkOrange, darkBlue, darkGreen } from "../../theme";
+
 
 import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
@@ -17,6 +19,8 @@ const testEvents = [
   { title: "border color test", start: "2020-05-10", end: "2020-05-17", borderColor: "red" },
   { title: "text color test", start: "2020-05-10", end: "2020-05-17", textColor: "red" }
 ];
+
+const colors = [darkOrange, darkBlue, darkGreen];
 
 const calendarHeader = {
   left: "prev,next today",
@@ -31,22 +35,42 @@ export function calendarCall(info, successCallback) {
 }
 
 export default function Calendar() {
+
   return (
-    <div onClick={(e) => e.preventDefault()}>
-      <FullCalendar
-        defaultView="dayGridMonth"
-        plugins={[dayGridPlugin, timeGridPlugin, googleCalendarPlugin, interactionPlugin]}
-        googleCalendarApiKey='AIzaSyBREtcqxmgY2SbJB5ddscMlKpWrHM0R1JM'
-        events={{googleCalendarId: "q2o6gp4ogd31rls2q7sqvl5nps@group.calendar.google.com"}}
-        header={calendarHeader}
-        eventRender={(info) => {
-          var node = document.createElement("LI");
-          var textnode = document.createTextNode("Water");
+    <FullCalendar
+      defaultView="dayGridMonth"
+      eventTextColor="white"
+      eventBorderColor="rgba(0, 0, 0, 0)"
+      plugins={[dayGridPlugin, timeGridPlugin, googleCalendarPlugin, interactionPlugin]}
+      googleCalendarApiKey='AIzaSyBREtcqxmgY2SbJB5ddscMlKpWrHM0R1JM'
+      events={{googleCalendarId: "q2o6gp4ogd31rls2q7sqvl5nps@group.calendar.google.com"}}
+      header={calendarHeader}
+      eventDataTransform={(info) => {
+        console.log(info);
+        info.url = undefined;
+      }}
+      eventRender={(info) => {
+        const {location, description} = info.event.extendedProps;
+        info.el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        let node;
+        let textnode;
+        if(location){
+          node = document.createElement("div");
+          textnode = document.createTextNode(`Location: ${location}`);
           node.appendChild(textnode);
           info.el.appendChild(node);
-          info.el.appendChild(<div>Hello</div>);
-        }}
-      />
-    </div>
+        }
+        if(description){
+          if(description[0] === "<"){
+            info.el.insertAdjacentHTML("beforeend", `Link: ${description}`);
+          } else{
+            node = document.createElement("div");
+            textnode = document.createTextNode(`Description: ${description}`);
+            node.appendChild(textnode);
+            info.el.appendChild(node);
+          }
+        }
+      }}
+    />
   );
 }

@@ -1,6 +1,10 @@
 
-  @media(max-width: 800px){
-    .fc {
-      font-size: .7em !important;
-    }
+@media(max-width: 800px){
+  .fc {
+    font-size: .7em !important;
   }
+}
+
+.fc-day-grid-event {
+  cursor: default;
+}
