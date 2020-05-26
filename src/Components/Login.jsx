@@ -31,8 +31,8 @@ function initializeGoogleSignIn(setSignedIn) {
   });
 
   window.gapi.load("signin2", () => {
-      window.gapi.signin2.render("loginButton");
-    });
+    window.gapi.signin2.render("loginButton");
+  });
 }
 
 export function signOut() {
@@ -40,18 +40,18 @@ export function signOut() {
 }
 
 export default function Login() {
-  const [signedIn, setSignedIn] = useContext(UserContext);
+  const setSignedIn = useContext(UserContext);
 
   useEffect(() => {
     insertGoogleApiScript(setSignedIn);
-  }, []);
+  }, [setSignedIn]);
 
   return (
     <Container>
       <h2>Welcome to Callibrity!</h2>
       <div id="loginButton"></div>
     </Container>
-  )
+  );
 }
 
 const Container = styled.div`

@@ -68,13 +68,13 @@ function App() {
 
   const ifUserSignedIn =(Component) => {
     return (signedIn ?
-        <Component/> :
-        <Login/>
-    )
-  }
+      <Component/> :
+      <Login/>
+    );
+  };
 
   return (
-    <UserContext.Provider value={[signedIn, setSignedIn]}>
+    <UserContext.Provider value={{signedIn, setSignedIn}}>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <GlobalStyle />
