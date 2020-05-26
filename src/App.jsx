@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { normalize } from "styled-normalize";
@@ -9,6 +9,7 @@ import People from "./Components/people/People";
 import Wiki from "./Components/Wiki";
 import Login from "./Components/Login";
 import theme from "./theme";
+import {UserContext} from "./Components/UserContext";
 
 const GlobalStyle = createGlobalStyle`
  ${normalize}
@@ -60,20 +61,33 @@ const GlobalStyle = createGlobalStyle`
  }
 `;
 
+
 function App() {
+  
+  const [signedIn, setSignedIn] = useState(null);
+
+  const ifUserSignedIn =(Component) => {
+    return (signedIn ?
+        <Component/> :
+        <Login/>
+    )
+  }
+
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <GlobalStyle />
-        <Navbar />
-        <Switch>
-          <Route exact path="/" component={Homepage} />
-          <Route path="/login" component={Login} />
-          <Route path="/wiki" component={Wiki} />
-          <Route path="/people" component={People} />
-        </Switch>
-      </BrowserRouter>
-    </ThemeProvider>
+    <UserContext.Provider value={[signedIn, setSignedIn]}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <GlobalStyle />
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={() => ifUserSignedIn(Homepage)} />
+            <Route path="/login" component={Login} />
+            <Route path="/wiki" component={() => ifUserSignedIn(Wiki)} />
+            <Route path="/people" component={() => ifUserSignedIn(People)} />
+          </Switch>
+        </BrowserRouter>
+      </ThemeProvider>
+    </UserContext.Provider>
   );
 }
 

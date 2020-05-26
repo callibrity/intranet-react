@@ -3,6 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import styled from "styled-components";
 import NavLinks from "./NavLinks";
 import { Link } from "react-router-dom";
+import { signOut } from "./Login";
 
 
 export default function Navbar() {
@@ -20,6 +21,7 @@ export default function Navbar() {
         <Search alt="search bar" value={text} onChange={(e) => { setText(e.target.value); }} />
       </SearchContainer>
       <NavLinks />
+      <button id="signout-button" onClick={signOut}>Sign out</button>
     </Container>
   );
 }
