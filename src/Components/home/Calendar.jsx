@@ -1,67 +1,11 @@
 import React from "react";
-import API from "../../api";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
-import googleCalendarPlugin from "@fullcalendar/google-calendar";
-import interactionPlugin from "@fullcalendar/interaction";
-import tippy from "tippy.js";
-import "tippy.js/dist/tippy.css";
-import {darkOrange, darkBlue, darkGreen } from "../../theme";
 
-
-import "@fullcalendar/core/main.css";
-import "@fullcalendar/daygrid/main.css";
-import "@fullcalendar/timegrid/main.css";
-import "./calendar.css";
-
-const colors = [darkOrange, darkBlue, darkGreen];
-
-const calendarHeader = {
-  left: "prev,next today",
-  center: "title",
-  right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
-};
-
-export function calendarCall(info, successCallback) {
-  API.get(`/calendar?start=${info.start}&end=${info.end}`)
-    .then((res) => successCallback(res.data))
-    .catch((err) => console.error(err));
-}
+const calendarString = "https://calendar.google.com/calendar/b/2/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;showTitle=0&amp;showPrint=0&amp;src=Y2FsbGlicml0eS5jb21fcHE1dDVlYWNyczVoN29haHNhOWk3bTJtNm9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Y2FsbGlicml0eS5jb21fMGY5aXJjMDFrOGowZ3A5ZG9xbTRvZGpvcm9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Y2FsbGlicml0eS5jb21fYnM0b3U4NDB0dnVva2w2N2JhMG50MjZycGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23F6BF26&amp;color=%23009688&amp;color=%23F6BF26";
 
 export default function Calendar() {
-
   return (
     <>
-      <iframe src="https://calendar.google.com/calendar/b/1/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FDetroit&amp;src=YWxleGphbWVzbW9yZWxsaUBnbWFpbC5jb20&amp;color=%237986CB" style={{border:"solid 1px #777"}} width="100%" height="800" frameBorder="0" scrolling="no"></iframe>
-      <FullCalendar
-        defaultView="dayGridMonth"
-        eventTextColor="white"
-        eventBorderColor="rgba(0, 0, 0, 0)"
-        plugins={[dayGridPlugin, timeGridPlugin, googleCalendarPlugin, interactionPlugin]}
-        googleCalendarApiKey='AIzaSyBREtcqxmgY2SbJB5ddscMlKpWrHM0R1JM'
-        events={{googleCalendarId: "q2o6gp4ogd31rls2q7sqvl5nps@group.calendar.google.com"}}
-        header={calendarHeader}
-        eventDataTransform={(info) => {
-          info.url = undefined;
-        }}
-        eventRender={(info) => {
-          const {location, description} = info.event.extendedProps;
-          info.el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-          info.el.setAttribute("data-tippy-content", `<strong>Location</strong>: ${location} <strong>Description</strong>: ${description}`); 
-          tippy(info.el, {
-            allowHTML: true,
-            trigger: "click",
-            arrow: true,
-            duration: 500,
-            interactive: true,
-            interactiveBorder: 30,
-            maxWidth: 500,
-            placement: "bottom",
-            appendTo: document.body
-          });
-        }}
-      />
+      <iframe src="https://calendar.google.com/calendar/b/2/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;showTitle=0&amp;showPrint=0&amp;src=Y2FsbGlicml0eS5jb21fcHE1dDVlYWNyczVoN29haHNhOWk3bTJtNm9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Y2FsbGlicml0eS5jb21fMGY5aXJjMDFrOGowZ3A5ZG9xbTRvZGpvcm9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Y2FsbGlicml0eS5jb21fYnM0b3U4NDB0dnVva2w2N2JhMG50MjZycGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23F6BF26&amp;color=%23009688&amp;color=%23F6BF26" width="800" height="600" frameBorder="0" scrolling="no"></iframe>
     </>
   );
 }
