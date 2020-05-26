@@ -32,33 +32,36 @@ export function calendarCall(info, successCallback) {
 export default function Calendar() {
 
   return (
-    <FullCalendar
-      defaultView="dayGridMonth"
-      eventTextColor="white"
-      eventBorderColor="rgba(0, 0, 0, 0)"
-      plugins={[dayGridPlugin, timeGridPlugin, googleCalendarPlugin, interactionPlugin]}
-      googleCalendarApiKey='AIzaSyBREtcqxmgY2SbJB5ddscMlKpWrHM0R1JM'
-      events={{googleCalendarId: "q2o6gp4ogd31rls2q7sqvl5nps@group.calendar.google.com"}}
-      header={calendarHeader}
-      eventDataTransform={(info) => {
-        info.url = undefined;
-      }}
-      eventRender={(info) => {
-        const {location, description} = info.event.extendedProps;
-        info.el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        info.el.setAttribute("data-tippy-content", `<strong>Location</strong>: ${location} <strong>Description</strong>: ${description}`); 
-        tippy(info.el, {
-          allowHTML: true,
-          trigger: "click",
-          arrow: true,
-          duration: 500,
-          interactive: true,
-          interactiveBorder: 30,
-          maxWidth: 500,
-          placement: "bottom",
-          appendTo: document.body
-        });
-      }}
-    />
+    <>
+      <iframe src="https://calendar.google.com/calendar/b/1/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FDetroit&amp;src=YWxleGphbWVzbW9yZWxsaUBnbWFpbC5jb20&amp;color=%237986CB" style={{border:"solid 1px #777"}} width="100%" height="800" frameBorder="0" scrolling="no"></iframe>
+      <FullCalendar
+        defaultView="dayGridMonth"
+        eventTextColor="white"
+        eventBorderColor="rgba(0, 0, 0, 0)"
+        plugins={[dayGridPlugin, timeGridPlugin, googleCalendarPlugin, interactionPlugin]}
+        googleCalendarApiKey='AIzaSyBREtcqxmgY2SbJB5ddscMlKpWrHM0R1JM'
+        events={{googleCalendarId: "q2o6gp4ogd31rls2q7sqvl5nps@group.calendar.google.com"}}
+        header={calendarHeader}
+        eventDataTransform={(info) => {
+          info.url = undefined;
+        }}
+        eventRender={(info) => {
+          const {location, description} = info.event.extendedProps;
+          info.el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          info.el.setAttribute("data-tippy-content", `<strong>Location</strong>: ${location} <strong>Description</strong>: ${description}`); 
+          tippy(info.el, {
+            allowHTML: true,
+            trigger: "click",
+            arrow: true,
+            duration: 500,
+            interactive: true,
+            interactiveBorder: 30,
+            maxWidth: 500,
+            placement: "bottom",
+            appendTo: document.body
+          });
+        }}
+      />
+    </>
   );
 }
