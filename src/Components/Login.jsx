@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { UserContext } from "./UserContext";
-import { GoogleLogin, GoogleLogout } from "react-google-login";
+import { GoogleLogin, GoogleLogout, useGoogleLogin } from "react-google-login";
 
 const responseGoogle = (response) => {
   console.log(response);
@@ -19,8 +19,6 @@ export function Logout() {
 }
 
 export default function Login() {
-  const { setSignedIn, setUsername, setUserEmail } = useContext(UserContext);
-  
   const loginSuccess = (response) => {
     console.log(response.profileObj);
     const profile = response.profileObj;
@@ -28,6 +26,17 @@ export default function Login() {
     setUserEmail(profile.email);
     setSignedIn(true);
   };
+
+  const { signIn, loaded } = useGoogleLogin({
+    clientId: "1084859424709-tk8745k1d0bnqfvlmsoa0j3uo5bkm9un.apps.googleusercontent.com",
+    onSuccess: loginSuccess,
+    onFailure: responseGoogle,
+    isSignedIn: true
+  });
+
+  const { setSignedIn, setUsername, setUserEmail } = useContext(UserContext);
+  
+
 
   return (
     <Container>
@@ -40,6 +49,7 @@ export default function Login() {
         onFailure={responseGoogle}
         isSignedIn={true}
       />
+      <div onClick={signIn} >test </div>
     </Container>
   );
 }

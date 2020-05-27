@@ -4,7 +4,7 @@ import styled from "styled-components";
 import NavLinks from "./NavLinks";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
-import {Logout} from "./Login";
+import Logout from "./Logout";
 
 
 
