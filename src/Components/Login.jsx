@@ -22,7 +22,6 @@ export default function Login() {
   const { setSignedIn, setUsername, setUserEmail } = useContext(UserContext);
   
   const loginSuccess = (response) => {
-    console.log(response.profileObj);
     const profile = response.profileObj;
     setUsername(profile.name);
     setUserEmail(profile.email);

@@ -84,7 +84,6 @@ function App() {
           <Navbar />
           <Switch>
             <Route exact path="/" component={() => ifUserSignedIn(Homepage)} />
-            <Route path="/login" component={Login} />
             <Route path="/wiki" component={() => ifUserSignedIn(Wiki)} />
             <Route path="/people" component={() => ifUserSignedIn(People)} />
           </Switch>
