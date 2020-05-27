@@ -1,18 +1,26 @@
 import React from "react";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import App from "../App";
-import { useGoogleLogin, useGoogleLogout } from "react-google-login";
-jest.mock("react-google-login");
+//import { useGoogleLogin, useGoogleLogout } from "react-google-login";
 
-useGoogleLogin.mockImplementation(({onSuccess}) => onSuccess());
-useGoogleLogout.mockImplementation(({onLogoutSuccess}) => onLogoutSuccess());
+jest.mock("react-google-login", () => {
+  return {
+    useGoogleLogin: ({onSuccess}) => {
+      return {
+        signIn: () => onSuccess({profileObj: {name: "test", email: "test"}}), 
+        loaded: true
+      };
+    },
+    useGoogleLogout: jest.fn(),
+  };
+});
 
 function renderApp() {
   const app = render(<App />);
 
   return {
     app,
-    login: app.getByText(/test/i),
+    login: app.getByText(/sign in/i),
     logo: app.getByAltText(/callibrity logo/i),
     search: app.getByAltText(/search bar/i),
     wikiNav: app.getByText(/wiki/i),
@@ -48,6 +56,7 @@ test("full app rendering/navigating", () => {
   expect(peoplePage).not.toBeInTheDocument();
 
   fireEvent.click(login);
+  ({loginPage, homePage, wikiPage, peoplePage} = queryForPages(app));
   expect(loginPage).not.toBeInTheDocument();
   expect(homePage).toBeInTheDocument();
   expect(wikiPage).not.toBeInTheDocument();
@@ -55,7 +64,7 @@ test("full app rendering/navigating", () => {
 
 
   fireEvent.click(wikiNav);
-  ({homePage, wikiPage, peoplePage} = queryForPages(app));
+  ({loginPage, homePage, wikiPage, peoplePage} = queryForPages(app));
 
   expect(homePage).not.toBeInTheDocument();
   expect(wikiPage).toBeInTheDocument();
