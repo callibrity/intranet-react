@@ -11,14 +11,13 @@ export default function Login() {
       setUsername(name);
       setUserEmail(email);
     },
-    onFailure: (response) => console.log(response),
     isSignedIn: true
   });
 
   return (
     <Container>
-      <h2>Welcome to Callibrity!</h2>
-      <SignIn onClick={signIn} >SIGN IN</SignIn>
+      <Welcome>Welcome to Callibrity!</Welcome>
+      <SignIn onClick={signIn} >Sign In</SignIn>
     </Container>
   );
 }
@@ -32,7 +31,25 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
+const Welcome = styled.h2`
+  margin-bottom: 30px;
+`;
+
 const SignIn = styled.div`
-background-color: red;
-color: white;
+  border: 1px solid black;
+  box-shadow: 0 1px 1px black, 0 2px 5px rgba(0,0,0,0.6), 0 4px 10px rgba(0,0,0,0.2);
+  border-color: rgba(0,0,0,0.2) rgba(0,0,0,0.35) rgba(0,0,0,0.55);
+  border-bottom-width: 2px;
+  color: white;
+  transition: background-color .5s;
+  
+  background-color: ${({ theme: { darkerBlue } }) => darkerBlue};
+  padding: .66em .9em;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: 700;
+
+  :hover{
+    background-color: ${({ theme: { blue } }) => blue};
+  }
 `;

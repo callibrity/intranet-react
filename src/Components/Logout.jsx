@@ -14,12 +14,10 @@ export default function Logout() {
   });
 
   return(
-    <Container onClick={signOut}>SIGN OUT</Container>
+    <Container onClick={signOut}>Sign Out</Container>
   );
 }
 
 const Container = styled.div`
-  background-color: red;
-  height: 100px;
-  width: 100px;
+
 `;
