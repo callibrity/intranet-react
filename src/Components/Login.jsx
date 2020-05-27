@@ -4,11 +4,10 @@ import { UserContext } from "./UserContext";
 import { useGoogleLogin } from "react-google-login";
 
 export default function Login() {
-  const { setSignedIn, setUsername, setUserEmail } = useContext(UserContext);
+  const { setUsername, setUserEmail } = useContext(UserContext);
   const { signIn } = useGoogleLogin({
     clientId: "1084859424709-tk8745k1d0bnqfvlmsoa0j3uo5bkm9un.apps.googleusercontent.com",
     onSuccess: ({profileObj: {name, email}}) => {
-      setSignedIn(true);
       setUsername(name);
       setUserEmail(email);
     },
