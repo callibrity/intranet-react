@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaSearch } from "react-icons/fa";
 import styled from "styled-components";
 import NavLinks from "./NavLinks";
 import { Link } from "react-router-dom";
-import { signOut } from "./Login";
+import { UserContext } from "./UserContext";
+import {Logout} from "./Login";
+
 
 
 export default function Navbar() {
   const [text, setText] = useState("");
+  const { username } = useContext(UserContext);
+  console.log(username);
 
   return (
     <Container>
@@ -21,7 +25,8 @@ export default function Navbar() {
         <Search alt="search bar" value={text} onChange={(e) => { setText(e.target.value); }} />
       </SearchContainer>
       <NavLinks />
-      <button id="signout-button" onClick={signOut}>Sign out</button>
+      <div>{username}</div>
+      <Logout />
     </Container>
   );
 }

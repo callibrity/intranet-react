@@ -65,6 +65,9 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   
   const [signedIn, setSignedIn] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [userEmail, setUserEmail] = useState(null);
+  const userInfo = { signedIn, setSignedIn, username, setUsername, userEmail, setUserEmail };
 
   const ifUserSignedIn =(Component) => {
     return (signedIn ?
@@ -74,7 +77,7 @@ function App() {
   };
 
   return (
-    <UserContext.Provider value={{signedIn, setSignedIn}}>
+    <UserContext.Provider value={userInfo}>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <GlobalStyle />
