@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
   min-height: 100vh;
   position: relative;
   font-size: 20px;
+  background-color: #EEECEF;
  }
 
  a {
