@@ -31,8 +31,8 @@ export default function Navbar() {
         />
       </SearchContainer>
       <NavLinks />
-      <Dropdown>
-        <Dropdown.Toggle as="a">{username}</Dropdown.Toggle>
+      <Dropdown >
+        <Dropdown.Toggle data-testid="dropdown" as="a">{username}</Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item>
             <Logout />

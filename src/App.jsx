@@ -63,14 +63,12 @@ const GlobalStyle = createGlobalStyle`
 
 
 function App() {
-  
-  const [signedIn, setSignedIn] = useState(null);
   const [username, setUsername] = useState(null);
   const [userEmail, setUserEmail] = useState(null);
-  const userInfo = { signedIn, setSignedIn, username, setUsername, userEmail, setUserEmail };
+  const userInfo = { username, setUsername, userEmail, setUserEmail };
 
   const ifUserSignedIn =(Component) => {
-    return (signedIn ?
+    return (username ?
       <Component/> :
       <Login/>
     );
