@@ -72,8 +72,8 @@ test("full app rendering/navigating", () => {
   expect(wikiPage).not.toBeInTheDocument();
 
   fireEvent.click(dropdown);
-  const logout2 = app.queryByText(/sign out/i);
-  fireEvent.click(logout2);
+  const logout = app.queryByText(/sign out/i);
+  fireEvent.click(logout);
   ({loginPage, homePage} = queryForPages(app));
   expect(loginPage).toBeInTheDocument();
   expect(homePage).not.toBeInTheDocument();
