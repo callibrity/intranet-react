@@ -4,8 +4,10 @@ import styled from "styled-components";
 import NavLinks from "./NavLinks";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
-import { Logout } from "./Login";
-import { Dropdown } from "react-bootstrap";
+import Logout from "./Logout";
+import {Dropdown} from "react-bootstrap";
+
+
 
 export default function Navbar() {
   const [text, setText] = useState("");
