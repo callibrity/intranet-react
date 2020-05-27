@@ -5,7 +5,7 @@ import { useGoogleLogout } from "react-google-login";
 
 export default function Logout() {
   const { setSignedIn } = useContext(UserContext);
-  const {signOut, loaded} = useGoogleLogout({
+  const {signOut} = useGoogleLogout({
     clientId:"1084859424709-tk8745k1d0bnqfvlmsoa0j3uo5bkm9un.apps.googleusercontent.com",
     onLogoutSuccess:() => setSignedIn(false)
   });
@@ -20,13 +20,3 @@ const Container = styled.div`
   height: 100px;
   width: 100px;
 `;
-
-
-
-/*
-    <GoogleLogout
-      clientId="1084859424709-tk8745k1d0bnqfvlmsoa0j3uo5bkm9un.apps.googleusercontent.com"
-      buttonText="Logout"
-      onLogoutSuccess={() => setSignedIn(false)}
-    />
-*/
