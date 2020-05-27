@@ -1,12 +1,26 @@
 import React from "react";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import App from "../App";
+//import { useGoogleLogin, useGoogleLogout } from "react-google-login";
+
+jest.mock("react-google-login", () => {
+  return {
+    useGoogleLogin: ({onSuccess}) => {
+      return {
+        signIn: () => onSuccess({profileObj: {name: "test", email: "test"}}), 
+        loaded: true
+      };
+    },
+    useGoogleLogout: jest.fn(),
+  };
+});
 
 function renderApp() {
   const app = render(<App />);
 
   return {
     app,
+    login: app.getByText(/sign in/i),
     logo: app.getByAltText(/callibrity logo/i),
     search: app.getByAltText(/search bar/i),
     wikiNav: app.getByText(/wiki/i),
@@ -16,6 +30,7 @@ function renderApp() {
 
 function queryForPages(app) {
   return {
+    loginPage: app.queryByText(/welcome/i),
     homePage: app.queryByText(/announcements/i),
     wikiPage: app.queryByText(/wiki check/i),
     peoplePage: app.queryByText(/financial analyst/i)
@@ -31,16 +46,25 @@ function queryForSearchBar(app) {
 afterEach(cleanup);
 
 test("full app rendering/navigating", () => {
-  const {app, logo, wikiNav, peopleNav} = renderApp();
+  const {login, app, logo, wikiNav, peopleNav} = renderApp();
 
-  let {homePage, wikiPage, peoplePage} = queryForPages(app);
+  let {loginPage, homePage, wikiPage, peoplePage} = queryForPages(app);
 
+  expect(loginPage).toBeInTheDocument();
+  expect(homePage).not.toBeInTheDocument();
+  expect(wikiPage).not.toBeInTheDocument();
+  expect(peoplePage).not.toBeInTheDocument();
+
+  fireEvent.click(login);
+  ({loginPage, homePage, wikiPage, peoplePage} = queryForPages(app));
+  expect(loginPage).not.toBeInTheDocument();
   expect(homePage).toBeInTheDocument();
   expect(wikiPage).not.toBeInTheDocument();
   expect(peoplePage).not.toBeInTheDocument();
 
+
   fireEvent.click(wikiNav);
-  ({homePage, wikiPage, peoplePage} = queryForPages(app));
+  ({loginPage, homePage, wikiPage, peoplePage} = queryForPages(app));
 
   expect(homePage).not.toBeInTheDocument();
   expect(wikiPage).toBeInTheDocument();
