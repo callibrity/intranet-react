@@ -2,11 +2,24 @@ import React from "react";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import App from "../App";
 
+jest.mock("react-google-login", () => {
+  return {
+    useGoogleLogin: ({onSuccess}) => {
+      return {signIn: () => onSuccess({profileObj: {name: "test", email: "test"}})};
+    },
+    useGoogleLogout: ({onLogoutSuccess}) => {
+      return {signOut: () => onLogoutSuccess()};
+    },
+  };
+});
+
 function renderApp() {
   const app = render(<App />);
 
   return {
     app,
+    login: app.getByText(/sign in/i),
+    dropdown: app.getByTestId(/dropdown/i),
     logo: app.getByAltText(/callibrity logo/i),
     search: app.getByAltText(/search bar/i),
     wikiNav: app.getByText(/wiki/i),
@@ -16,6 +29,7 @@ function renderApp() {
 
 function queryForPages(app) {
   return {
+    loginPage: app.queryByText(/welcome/i),
     homePage: app.queryByText(/announcements/i),
     wikiPage: app.queryByText(/wiki check/i),
     peoplePage: app.queryByText(/financial analyst/i)
@@ -31,34 +45,38 @@ function queryForSearchBar(app) {
 afterEach(cleanup);
 
 test("full app rendering/navigating", () => {
-  const {app, logo, wikiNav, peopleNav} = renderApp();
+  const {login, dropdown, app, logo, wikiNav, peopleNav} = renderApp();
 
-  let {homePage, wikiPage, peoplePage} = queryForPages(app);
+  let {loginPage, homePage, wikiPage, peoplePage} = queryForPages(app);
 
+  expect(loginPage).toBeInTheDocument();
+
+  fireEvent.click(login);
+  ({loginPage, homePage} = queryForPages(app));
+  expect(loginPage).not.toBeInTheDocument();
   expect(homePage).toBeInTheDocument();
-  expect(wikiPage).not.toBeInTheDocument();
-  expect(peoplePage).not.toBeInTheDocument();
 
   fireEvent.click(wikiNav);
-  ({homePage, wikiPage, peoplePage} = queryForPages(app));
-
+  ({homePage, wikiPage} = queryForPages(app));
   expect(homePage).not.toBeInTheDocument();
   expect(wikiPage).toBeInTheDocument();
-  expect(peoplePage).not.toBeInTheDocument();
 
   fireEvent.click(peopleNav);
-  ({homePage, wikiPage, peoplePage} = queryForPages(app));
-
-  expect(homePage).not.toBeInTheDocument();
+  ({wikiPage, peoplePage} = queryForPages(app));
   expect(wikiPage).not.toBeInTheDocument();
   expect(peoplePage).toBeInTheDocument();
 
   fireEvent.click(logo);
-  ({homePage, wikiPage, peoplePage} = queryForPages(app));
-  
+  ({homePage, wikiPage} = queryForPages(app));
   expect(homePage).toBeInTheDocument();
   expect(wikiPage).not.toBeInTheDocument();
-  expect(peoplePage).not.toBeInTheDocument();
+
+  fireEvent.click(dropdown);
+  const logout = app.queryByText(/sign out/i);
+  fireEvent.click(logout);
+  ({loginPage, homePage} = queryForPages(app));
+  expect(loginPage).toBeInTheDocument();
+  expect(homePage).not.toBeInTheDocument();
 });
 
 test("search bar input", () => {
