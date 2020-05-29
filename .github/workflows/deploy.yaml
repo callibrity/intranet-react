@@ -31,4 +31,5 @@ jobs:
         version: '276.0.0'
         service_account_email: ${{secrets.GCP_SA_EMAIL}}
         service_account_key: ${{secrets.GCP_SA_KEY}}
+    - run: gcloud config set project intranet-277714
     - run: gcloud app deploy
