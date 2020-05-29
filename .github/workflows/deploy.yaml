@@ -32,6 +32,3 @@ jobs:
         service_account_email: ${{secrets.GCP_SA_EMAIL}}
         service_account_key: ${{secrets.GCP_SA_KEY}}
     - run: gsutil -m rsync -d -c -r build gs://react-intranet/build
-    - run: gsutil rsync -r gs://react-intranet ./test-app
-    - run: cd test-app
-    - run: gcloud app deploy
