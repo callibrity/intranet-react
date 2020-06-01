@@ -1,29 +1,18 @@
 name: Deploy to Google Cloud Storage
 on:
   push:
-    branches:
-      - master # Deployment will be triggered when we will push to the master branch
+    # branches:
+      # - master # Deployment will be triggered when we will push to the master branch
 
 jobs:  
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Git checkout
-      uses: actions/checkout@v1
-
-    - name: Setup node
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-
-    - name: npm install, build, and test
-      run: |
-        npm ci
-        npm run build --if-present
-        npm test
-      env:
-        CI: true
+    - name: Download build
+      uses: actions/download-artifact@v2
+      with: 
+        name: build
 
     - name: Deploy to Google Cloud Storage
       uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
