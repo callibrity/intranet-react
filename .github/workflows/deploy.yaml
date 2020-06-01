@@ -1,20 +1,39 @@
 name: Deploy to Google Cloud Storage
 on:
   push:
-    # branches:
-      # - master # Deployment will be triggered when we will push to the master branch
+    branches:
+      - master
 
 jobs:  
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Download build
-      uses: actions/download-artifact@v2
-      with: 
-        name: build
+    - name: Git checkout
+      uses: actions/checkout@v2
 
-    - name: Deploy to Google Cloud Storage
+    - name: Cache node modules
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+           ${{ runner.os }}-node-
+           
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+
+    - name: Install, build, and test
+      run: |
+        npm ci
+        npm run build --if-present
+        npm test
+      env:
+        CI: true
+
+    - name: Deploy to Google App Engine
       uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
         version: '276.0.0'
