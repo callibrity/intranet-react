@@ -5,7 +5,7 @@ import styled from "styled-components";
 export default function NavLinks() {
   return (
     <Container>
-      <StyledLink to="/wiki">TestWiki</StyledLink>
+      <StyledLink to="/wiki">Wiki</StyledLink>
       <StyledLink to="/people">People</StyledLink>
     </Container>
   );
