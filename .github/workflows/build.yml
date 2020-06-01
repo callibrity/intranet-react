@@ -44,7 +44,7 @@ jobs:
     - run: echo ${{github.base_ref}}
 
     - name: Archive the build
-      if: ${{github.event_name == 'pull_request' && github.head_ref == 'master'}}
+      if: ${{github.event_name == 'pull_request' && github.base_ref == 'master'}}
       uses: actions/upload-artifact@v2
       with:
         name: build
