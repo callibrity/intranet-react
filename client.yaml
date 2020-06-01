@@ -1,5 +1,6 @@
 runtime: python27
 service: default
+threadsafe: true
 handlers:
 - url: /
   static_files: build/index.html
