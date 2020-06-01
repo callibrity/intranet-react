@@ -35,12 +35,12 @@ jobs:
       env:
         CI: true
 
-    - name: Log info
-      run: | 
-        echo ${{github.event_name}}
-        echo ${{github.ref}}
-        echo ${{github.head_ref}}
-        echo ${{github.base_ref}}
+    - run: echo ${{github.event_name}}
+      
+    - run: echo ${{github.ref}}
+  
+    - run: echo ${{github.head_ref}}
+
 
     - name: Archive the build
       if: ${{github.event_name == 'pull_request' && github.head_ref == 'master'}}
