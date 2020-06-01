@@ -1,4 +1,4 @@
-name: Deploy to Google Cloud Storage
+name: Build and deploy to GCP
 on:
   push:
     branches:
@@ -33,7 +33,7 @@ jobs:
       env:
         CI: true
 
-    - name: Deploy to Google App Engine
+    - name: Deploy to GCP
       uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
         version: '276.0.0'
