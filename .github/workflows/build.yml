@@ -41,6 +41,7 @@ jobs:
   
     - run: echo ${{github.head_ref}}
 
+    - run: echo ${{github.base_ref}}
 
     - name: Archive the build
       if: ${{github.event_name == 'pull_request' && github.head_ref == 'master'}}
