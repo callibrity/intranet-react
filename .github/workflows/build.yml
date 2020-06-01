@@ -35,6 +35,9 @@ jobs:
       env:
         CI: true
 
+    - name: Log info
+      run: echo ${{github.event_name}}
+
     - name: Archive the build
       if: ${{github.event_name == 'pull_request' && github.head_ref == 'master'}}
       uses: actions/upload-artifact@v2
