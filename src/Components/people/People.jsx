@@ -18,7 +18,6 @@ export default function People() {
         setEmployees(res.data);
       })
       .catch((err) => {
-        console.log("error");
         setEmployees(errorMessage);
       });
   }, [location]);
