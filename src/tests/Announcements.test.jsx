@@ -2,24 +2,10 @@
 import React from "react";
 import API from "../api";
 import Announcements, {announcementsRejection, initialAnnouncement} from "../Components/home/Announcements";
+import { mockAnnouncementsResponse } from "../constants";
 import { render, wait } from "@testing-library/react";
 
 jest.mock("../api");
-
-const mockAnnouncementsResponse = {data: [
-  {
-    date: "May 3",
-    event: "Alex, Alex, and Alec became acquainted"
-  },
-  {
-    date: "May 4",
-    event: "Alex, Alex, and Alec confused everyone with their names"
-  },
-  {
-    date: "May 5",
-    event: "Alex, Alex, and Alec thought everyone should change their names to Ale*"
-  }
-]};
 
 test("rejected announcements call", async () => {
   API.get.mockRejectedValue();

@@ -32,7 +32,7 @@ function queryForPages(app) {
     loginPage: app.queryByText(/welcome/i),
     homePage: app.queryByText(/announcements/i),
     wikiPage: app.queryByText(/wiki check/i),
-    peoplePage: app.queryByText(/financial analyst/i)
+    peoplePage: app.queryByText(/cincinnati/i)
   };
 }
 

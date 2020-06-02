@@ -4,11 +4,12 @@ import PersonTile from "./PersonTile";
 import LocationButtons from "./LocationButtons";
 import PeopleSearch from "./PeopleSearch";
 
+export const initialMessage = "Loading employees";
 export const errorMessage = "Could not retrieve data.";
 
 
 export default function People() {
-  const [employees, setEmployees] = useState([]);
+  const [employees, setEmployees] = useState(initialMessage);
   const [location, setLocation] = useState("Cincinnati");
   const [name, setName] = useState("");
 
@@ -22,18 +23,19 @@ export default function People() {
       });
   }, [location]);
 
-  const arr = employees.filter((person) => {
-    return person.name.toLowerCase().includes(name.toLowerCase());
-  });
-
-  const employeeList = arr.map(({ photo, name, role }) => (
-    <PersonTile 
-      key={photo} 
-      name={name} 
-      role={role} 
-      photo={photo}
-    />
-  ));
+  const employeeList = typeof employees === "string" ? employees
+    :employees
+      .filter((person) => {
+        return person.name.toLowerCase().includes(name.toLowerCase());
+      })
+      .map(({ photo, name, role }) => (
+        <PersonTile 
+          key={photo} 
+          name={name} 
+          role={role} 
+          photo={photo}
+        />
+      ));
   
   return (
     <div className="container" data-testid="people-page">
