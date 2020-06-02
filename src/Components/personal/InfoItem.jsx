@@ -22,4 +22,7 @@ const Label = styled.div`
   font-weight: 700;
 `;
 
-const Data = styled.data``;
+const Data = styled.data`
+  word-wrap: break-word;
+  word-break: break-word;
+`;
