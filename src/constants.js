@@ -115,3 +115,7 @@ export const quickLinks = {data: [
     url: "https://drive.google.com/drive/folders/0B28qaCwNRg44SU9CcDJ6OWc5Wlk?usp=sharing"
   }
 ]};
+
+export const apiInitialMessage = "Loading";
+
+export const apiErrorMessage = "API request failed";

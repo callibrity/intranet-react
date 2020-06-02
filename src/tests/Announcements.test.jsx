@@ -1,8 +1,8 @@
 // users.test.js
 import React from "react";
 import API from "../api";
-import Announcements, {announcementsRejection, initialAnnouncement} from "../Components/home/Announcements";
-import { mockAnnouncementsResponse } from "../constants";
+import Announcements from "../Components/home/Announcements";
+import { mockAnnouncementsResponse, apiInitialMessage, apiErrorMessage } from "../constants";
 import { render, wait } from "@testing-library/react";
 
 jest.mock("../api");
@@ -11,9 +11,9 @@ test("rejected announcements call", async () => {
   API.get.mockRejectedValue();
   const {queryByText} = render(<Announcements />);
 
-  expect(queryByText(initialAnnouncement)).toBeInTheDocument();
+  expect(queryByText(apiInitialMessage)).toBeInTheDocument();
 
-  await wait(() => expect(queryByText(announcementsRejection)).toBeInTheDocument());
+  await wait(() => expect(queryByText(apiErrorMessage)).toBeInTheDocument());
 
   expect(API.get.mock.calls.length).toEqual(1);
 });

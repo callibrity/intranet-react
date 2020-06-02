@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from "react";
-import API from "../../api";
+import React from "react";
 import styled from "styled-components";
-
-export const announcementsRejection = "Could not retrieve announcements";
-export const initialAnnouncement = "Loading";
+import useAPI from "../../hooks/useAPI";
 
 export function createAnnouncementsList(text) {
   const typeCheck = typeof text === "string";
@@ -19,16 +16,7 @@ export function createAnnouncementsList(text) {
 }
 
 export default function Announcements() {
-  const [announcements, setAnnouncements] = useState(initialAnnouncement);
-  useEffect(() => {
-    API.get("/announcements")
-      .then((res) => {
-        setAnnouncements(res.data);
-      })
-      .catch((err) => {
-        setAnnouncements(announcementsRejection);
-      });
-  }, []);
+  const announcements = useAPI("/announcements");
 
   const announcementsList = createAnnouncementsList(announcements);
 
