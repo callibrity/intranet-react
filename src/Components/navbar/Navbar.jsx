@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import styled from "styled-components";
 import NavLinks from "./NavLinks";
 import { Link } from "react-router-dom";
-import { UserContext } from "./UserContext";
+import { UserContext } from "../UserContext";
 import Logout from "./Logout";
 import {Dropdown} from "react-bootstrap";
 

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Section from "./home/Section";
-import Calendar from "./home/Calendar";
-import Announcements from "./home/Announcements";
+import Section from "./Section";
+import Calendar from "./Calendar";
+import Announcements from "./Announcements";
 
 export default function Homepage() {
   return (

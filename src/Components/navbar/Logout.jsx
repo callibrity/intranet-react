@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { UserContext } from "./UserContext";
+import { UserContext } from "../UserContext";
 import { useGoogleLogout } from "react-google-login";
-import {googleClientId} from "../constants";
+import {googleClientId} from "../../constants";
 
 export default function Logout() {
   const { setUsername, setUserEmail } = useContext(UserContext);
