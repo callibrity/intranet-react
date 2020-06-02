@@ -1,30 +1,17 @@
 import React from "react";
-import styled from "styled-components";
 import { Dropdown } from "react-bootstrap";
 import { quickLinks } from "../../globals/constants";
+import NavDropdown from "./NavDropdown";
 
 export default function QuickLinks() {
+  const {Item} = Dropdown;
   return (
-    <Container>
-      <Dropdown>
-        <Dropdown.Toggle data-testid="links-dropdown" as="a">
-          Quick Links
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          {quickLinks.data.map(({ title, url }) => (
-            <Dropdown.Item key={title} href={url}>
-              {title}
-            </Dropdown.Item>
-          ))}
-        </Dropdown.Menu>
-      </Dropdown>
-    </Container>
+    <NavDropdown label="Quick Links">
+      {quickLinks.map(({ title, url }) => (
+        <Item key={title} href={url}>
+          {title}
+        </Item>
+      ))}
+    </NavDropdown>
   );
 }
-
-const Container = styled.div`
-  padding: 8px;
-  :hover {
-    color: #dae0e5;
-  }
-`;

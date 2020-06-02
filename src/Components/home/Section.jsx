@@ -1,6 +1,7 @@
 // Package dependencies
 import React from "react";
 import styled from "styled-components";
+import {whiteContainer} from "../../globals/styles";
 
 // Component
 export default function Section({ label, color, children }) {
@@ -16,12 +17,9 @@ export default function Section({ label, color, children }) {
 
 // Styling
 const Container = styled.section`
+  ${whiteContainer}
   display: inline-block;
   margin: 20px 0;
-  background-color: white;
-  border-bottom: 1px solid rgba(0,0,0,0.4);
-  padding: 10px;
-  border-radius: 5px;
 `;
 
 const GroupHeader = styled.div`
@@ -31,9 +29,7 @@ const GroupHeader = styled.div`
   border-bottom: 1px solid ${({theme, color}) => theme[color]};
   margin-bottom: 10px;
 
-  
   @media (max-width: 1000px) {
     font-size: 20px;
   };
-  
 `;

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import QuickLinks from "./QuickLinks";
+import { linkStyle } from "../../globals/styles";
 
 export default function NavLinks() {
   return (
@@ -21,8 +22,5 @@ const Container = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-    padding: 8px;
-    :hover {
-        color: #dae0e5;
-    }
+    ${linkStyle}
 `;

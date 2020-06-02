@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import useAPI from "../../hooks/useAPI";
 
 export function createAnnouncementsList(text) {
@@ -9,24 +8,18 @@ export function createAnnouncementsList(text) {
   }
 
   return text.map((ele) => (
-    <Text key={ele.date}>
+    <div key={ele.date}>
       {`${ele.date}: ${ele.event}`}
-    </Text>
+    </div>
   ));
 }
 
 export default function Announcements() {
   const announcements = useAPI("/announcements");
-
   const announcementsList = createAnnouncementsList(announcements);
-
   return (
     <>
       {announcementsList}
     </>
   );
 }
-
-const Text = styled.div`
-
-`;
