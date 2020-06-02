@@ -9,6 +9,7 @@ import Homepage from "./Components/Homepage";
 import People from "./Components/people/People";
 import Wiki from "./Components/Wiki";
 import Login from "./Components/Login";
+import PersonalPage from "./Components/personal/PersonalPage";
 import theme from "./theme";
 import {UserContext} from "./Components/UserContext";
 
@@ -86,6 +87,7 @@ function App() {
             <Route exact path="/" component={() => ifUserSignedIn(Homepage)} />
             <Route path="/wiki" component={() => ifUserSignedIn(Wiki)} />
             <Route path="/people" component={() => ifUserSignedIn(People)} />
+            <Route path="/personal" component={() => ifUserSignedIn(PersonalPage)} />
           </Switch>
         </BrowserRouter>
       </ThemeProvider>

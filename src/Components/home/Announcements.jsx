@@ -26,7 +26,6 @@ export default function Announcements() {
         setAnnouncements(res.data);
       })
       .catch((err) => {
-        console.log("error");
         setAnnouncements(announcementsRejection);
       });
   }, []);
