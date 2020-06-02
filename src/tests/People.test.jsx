@@ -1,8 +1,8 @@
 // users.test.js
 import React from "react";
-import API from "../api";
+import API from "../globals/api";
 import People from "../Components/people/People";
-import { mockEmployeeResponse, apiInitialMessage, apiErrorMessage } from "../constants";
+import { mockEmployeeResponse, apiInitialMessage, apiErrorMessage } from "../globals/constants";
 import { render, wait, fireEvent } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 

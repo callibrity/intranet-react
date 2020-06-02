@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../../globals/UserContext";
 import { useGoogleLogin } from "react-google-login";
-import {googleClientId} from "../../constants";
+import {googleClientId} from "../../globals/constants";
 
 export default function Login() {
   const { setUsername, setUserEmail } = useContext(UserContext);

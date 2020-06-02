@@ -4,14 +4,14 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { normalize } from "styled-normalize";
 import "typeface-roboto";
-import Navbar from "./Components/Navbar";
-import Homepage from "./Components/Homepage";
+import Navbar from "./Components/navbar/Navbar";
+import Homepage from "./Components/home/Homepage";
 import People from "./Components/people/People";
-import Wiki from "./Components/Wiki";
-import Login from "./Components/Login";
+import Wiki from "./Components/wiki/Wiki";
+import Login from "./Components/login/Login";
 import PersonalPage from "./Components/personal/PersonalPage";
-import theme from "./theme";
-import {UserContext} from "./Components/UserContext";
+import theme from "./globals/theme";
+import {UserContext} from "./globals/UserContext";
 
 const GlobalStyle = createGlobalStyle`
  ${normalize}

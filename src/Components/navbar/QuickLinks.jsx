@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Dropdown } from "react-bootstrap";
-import { quickLinks } from "../../constants";
+import { quickLinks } from "../../globals/constants";
 
 export default function QuickLinks() {
   return (

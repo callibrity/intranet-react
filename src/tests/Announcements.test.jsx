@@ -1,8 +1,8 @@
 // users.test.js
 import React from "react";
-import API from "../api";
+import API from "../globals/api";
 import Announcements from "../Components/home/Announcements";
-import { mockAnnouncementsResponse, apiInitialMessage, apiErrorMessage } from "../constants";
+import { mockAnnouncementsResponse, apiInitialMessage, apiErrorMessage } from "../globals/constants";
 import { render, wait } from "@testing-library/react";
 
 jest.mock("../api");
