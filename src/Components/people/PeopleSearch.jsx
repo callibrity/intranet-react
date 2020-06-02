@@ -8,6 +8,7 @@ export default function PeopleSearch({name, setName}){
     <Container>
       <Label>Search:</Label>
       <Search 
+        type="search"
         value={name} 
         onChange={(e) => setName(e.target.value)} 
       />
