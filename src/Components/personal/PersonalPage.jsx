@@ -42,4 +42,5 @@ const LowerContainer = styled.div`
   display: grid;
   grid-column-gap: 50px;
   grid-template-columns: 1fr 2fr;
+  padding: 20px 0;
 `;
