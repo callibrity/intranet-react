@@ -16,7 +16,7 @@ export default function LocationButtons({location, setLocation}){
 
 const Container = styled.div``;
 
-const ButtonFilter = styled.button`
+const ButtonFilter = styled.div`
   border: 1px solid black;
   box-shadow: 0 1px 1px black, 0 2px 5px rgba(0,0,0,0.6), 0 4px 10px rgba(0,0,0,0.2);
   border-color: rgba(0,0,0,0.2) rgba(0,0,0,0.35) rgba(0,0,0,0.55);
