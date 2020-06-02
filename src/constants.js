@@ -84,3 +84,34 @@ export const mockEmployeeResponse =
     "photo": "https://www.callibrity.com/hs-fs/hubfs/Callibrity_December2018%20Theme/Images/aubrey-f.jpg?width=900&height=900&name=aubrey-f.jpg"
   }
 ]};
+
+export const quickLinks = {data: [
+  {
+    title: "Paylocity",
+    url: "https://login.paylocity.com/"
+  },
+  {
+    title: "John Hancock",
+    url: "https://myplan.johnhancock.com"
+  },
+  {
+    title: "Anthem",
+    url: "https://www.anthem.com/"
+  },
+  {
+    title: "HSA Bank",
+    url: "https://myaccounts.hsabank.com/"
+  },
+  {
+    title: "Dental Care Plus",
+    url: "https://member.dentalcareplus.com/login.aspx"
+  },
+  {
+    title: "EyeMed",
+    url: "https://eyemed.com/"
+  },
+  {
+    title: "Google Docs",
+    url: "https://drive.google.com/drive/folders/0B28qaCwNRg44SU9CcDJ6OWc5Wlk?usp=sharing"
+  }
+]};

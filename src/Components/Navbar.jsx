@@ -32,7 +32,7 @@ export default function Navbar() {
       </SearchContainer>
       <NavLinks />
       <Dropdown >
-        <Dropdown.Toggle data-testid="dropdown" as="a">{username}</Dropdown.Toggle>
+        <Dropdown.Toggle data-testid="user-dropdown" as="a">{username}</Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item>
             <Logout />

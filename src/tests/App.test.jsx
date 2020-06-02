@@ -19,7 +19,7 @@ function renderApp() {
   return {
     app,
     login: app.getByText(/sign in/i),
-    dropdown: app.getByTestId(/dropdown/i),
+    dropdown: app.getByTestId(/user-dropdown/i),
     logo: app.getByAltText(/callibrity logo/i),
     search: app.getByAltText(/search bar/i),
     wikiNav: app.getByText(/wiki/i),
