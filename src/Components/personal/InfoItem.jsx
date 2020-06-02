@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 export default function InfoItem({label, data}){
+  const text = typeof data === "string" || data === undefined ? data
+    : data.reduce((str, ele) => `${str}, ${ele}`); 
   return(
     <Container>
       <Label>{label}</Label>
-      <Data>{data}</Data>
+      <Data>{text}</Data>
     </Container>
   );
 }

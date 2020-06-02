@@ -14,7 +14,10 @@ export default function LocationButtons({location, setLocation}){
   );
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin-top: 20px;
+  display: flex;
+`;
 
 const ButtonFilter = styled.div`
   border: 1px solid black;
@@ -29,7 +32,7 @@ const ButtonFilter = styled.div`
   border-radius: 5px;
   font-size: 1em;
   font-weight: 700;
-  
+  margin: 20px;
 
   :hover{
     background-color: ${({ theme: { blue } }) => blue};
