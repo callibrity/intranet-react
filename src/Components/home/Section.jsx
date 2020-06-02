@@ -21,7 +21,7 @@ const Container = styled.section`
   background-color: white;
   border-bottom: 1px solid rgba(0,0,0,0.4);
   padding: 10px;
-    border-radius: 5px;
+  border-radius: 5px;
 `;
 
 const GroupHeader = styled.div`
