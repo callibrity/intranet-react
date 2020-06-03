@@ -5,7 +5,7 @@ import App from "../App";
 jest.mock("react-google-login", () => {
   return {
     useGoogleLogin: ({onSuccess}) => {
-      return {signIn: () => onSuccess({profileObj: {name: "test", email: "test"}})};
+      return {signIn: () => onSuccess({profileObj: {name: "testName", email: "test"}})};
     },
     useGoogleLogout: ({onLogoutSuccess}) => {
       return {signOut: () => onLogoutSuccess()};
@@ -19,7 +19,6 @@ function renderApp() {
   return {
     app,
     login: app.getByText(/sign in/i),
-    dropdown: app.getByTestId(/user-dropdown/i),
     logo: app.getByAltText(/callibrity logo/i),
     search: app.getByAltText(/search bar/i),
     wikiNav: app.getByText(/wiki/i),
@@ -45,7 +44,7 @@ function queryForSearchBar(app) {
 afterEach(cleanup);
 
 test("full app rendering/navigating", () => {
-  const {login, dropdown, app, logo, wikiNav, peopleNav} = renderApp();
+  const {login, app, logo, wikiNav, peopleNav} = renderApp();
 
   let {loginPage, homePage, wikiPage, peoplePage} = queryForPages(app);
 
@@ -71,7 +70,7 @@ test("full app rendering/navigating", () => {
   expect(homePage).toBeInTheDocument();
   expect(wikiPage).not.toBeInTheDocument();
 
-  fireEvent.click(dropdown);
+  fireEvent.click(app.getByText(/testName/i));
   const logout = app.queryByText(/sign out/i);
   fireEvent.click(logout);
   ({loginPage, homePage} = queryForPages(app));

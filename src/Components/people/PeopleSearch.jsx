@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-
+import { standardInput } from "../../globals/styles";
 
 export default function PeopleSearch({name, setName}){
-
   return(
     <Container>
       <Label>Search:</Label>
@@ -13,7 +12,6 @@ export default function PeopleSearch({name, setName}){
         onChange={(e) => setName(e.target.value)} 
       />
     </Container>
-
   );
 }
 
@@ -26,9 +24,5 @@ const Container = styled.div`
 const Label = styled.div``;
 
 const Search = styled.input`
-  height: 25px;
-  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
-  border-color: #bbbbbb #cfcfcf #e0e0e0 #cfcfcf;
-  border-radius: 3px;
-  padding: 5px;
+  ${standardInput}
 `;

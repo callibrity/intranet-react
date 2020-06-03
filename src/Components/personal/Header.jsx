@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { standardButton } from "../../globals/styles";
 
 export default function Header(){
   return(
@@ -24,16 +25,5 @@ const Title = styled.div`
 `;
 
 const EditButton = styled.div`
-  border: 1px solid black;
-  box-shadow: 0 1px 1px black, 0 2px 5px rgba(0,0,0,0.6), 0 4px 10px rgba(0,0,0,0.2);
-  border-color: rgba(0,0,0,0.2) rgba(0,0,0,0.35) rgba(0,0,0,0.55);
-  border-bottom-width: 2px;
-  color: white;
-  transition: background-color .5s;
-  cursor: pointer;
-  background-color: ${({ theme: { darkerBlue } }) => darkerBlue};
-  padding: .66em .9em;
-  border-radius: 5px;
-  font-size: 1em;
-  font-weight: 700;
+  ${standardButton}
 `;

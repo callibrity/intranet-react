@@ -1,20 +1,20 @@
 // users.test.js
 import React from "react";
-import API from "../api";
-import People, {initialMessage, errorMessage} from "../Components/people/People";
-import { mockEmployeeResponse } from "../constants";
+import API from "../globals/api";
+import People from "../Components/people/People";
+import { mockEmployeeResponse, apiInitialMessage, apiErrorMessage } from "../globals/constants";
 import { render, wait, fireEvent } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-jest.mock("../api");
+jest.mock("../globals/api");
 
 test("rejected announcements call", async () => {
   API.get.mockRejectedValue();
   const {getByText} = render(<Router><People /></Router>);
 
-  expect(getByText(initialMessage)).toBeInTheDocument();
+  expect(getByText(apiInitialMessage)).toBeInTheDocument();
 
-  await wait(() => expect(getByText(errorMessage)).toBeInTheDocument());
+  await wait(() => expect(getByText(apiErrorMessage)).toBeInTheDocument());
 
   expect(API.get.mock.calls.length).toEqual(1);
 });

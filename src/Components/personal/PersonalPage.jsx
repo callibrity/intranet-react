@@ -1,26 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {parse} from "query-string";
 import styled from "styled-components";
-import API from "../../api";
+import useAPI from "../../hooks/useAPI";
 import Summary from "./Summary";
 import Details from "./Details";
 import Header from "./Header";
 
-export const initialMessage = "Loading employee";
-export const errorMessage = "Could not retrieve data.";
-
-export default function PersonalPage(props){
-  const [employee, setEmployee] = useState(initialMessage);
-  useEffect(() => {
-    const {name} = parse(window.location.search);
-    API.get(`/employees?queryName=${name}`)
-      .then((res) => {
-        setEmployee(res.data);
-      })
-      .catch((err) => {
-        setEmployee(errorMessage);
-      });
-  }, []);
+export default function PersonalPage(){
+  const {name} = parse(window.location.search);
+  const employee = useAPI(`/employees?queryName=${name}`);
 
   return(
     <Container>
@@ -54,4 +42,5 @@ const LowerContainer = styled.div`
   display: grid;
   grid-column-gap: 50px;
   grid-template-columns: 1fr 2fr;
+  padding: 20px 0;
 `;

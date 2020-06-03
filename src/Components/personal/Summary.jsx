@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import InfoItem from "./InfoItem";
+import { whiteContainer } from "../../globals/styles";
 
 const infoList = [
   {
@@ -34,11 +35,8 @@ export default function Summary({employee}){
 }
 
 const Container = styled.div`
-  display: inline-block;
-  margin: 20px 0;
-  background-color: white;
-  border-bottom: 1px solid rgba(0,0,0,0.4);
-  border-radius: 5px;
+  ${whiteContainer};
+  padding: 0;
 `;
 
 const Title = styled.div`
@@ -46,7 +44,7 @@ const Title = styled.div`
   text-align: center;
   font-weight: 700;
   font-size: 20px;
-  margin: 10px 0;
+  padding: 10px 0;
 `;
 
 const Image = styled.img`

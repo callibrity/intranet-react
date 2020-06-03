@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import InfoItem from "./InfoItem";
+import { whiteContainer } from "../../globals/styles";
 
 const infoList = [
   {
@@ -27,7 +28,6 @@ const infoList = [
     label: "INTERESTS",
     data: "interests"
   }
-
 ];
 
 export default function Details({employee}){
@@ -56,10 +56,9 @@ export default function Details({employee}){
 }
 
 const Container = styled.div`
-  display: inline-block;
-  margin: 20px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.4);
-  border-radius: 5px;
+  ${whiteContainer};
+  padding: 0;
+  background-color: inherit;
   overflow: hidden;
 `;
 
