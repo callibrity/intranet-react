@@ -7,7 +7,7 @@ import PeopleSearch from "./PeopleSearch";
 export default function People() {
   const [location, setLocation] = useState("Cincinnati");
   const [name, setName] = useState("");
-  const employees = useAPI(`/employees?queryOffice=${location}`);
+  const employees = useAPI(`/employees?office=${location}`);
 
   const employeeList = typeof employees === "string" ? employees
     :employees

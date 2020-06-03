@@ -8,7 +8,7 @@ import Header from "./Header";
 
 export default function PersonalPage(){
   const {name} = parse(window.location.search);
-  const employee = useAPI(`/employees?queryName=${name}`);
+  const employee = useAPI(`/employees?name=${name}`);
 
   return(
     <Container>
