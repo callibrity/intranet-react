@@ -6,7 +6,7 @@ import { mockEmployeeResponse, apiInitialMessage, apiErrorMessage } from "../glo
 import { render, wait, fireEvent } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-jest.mock("../api");
+jest.mock("../globals/api");
 
 test("rejected announcements call", async () => {
   API.get.mockRejectedValue();

@@ -5,7 +5,7 @@ import Announcements from "../Components/home/Announcements";
 import { mockAnnouncementsResponse, apiInitialMessage, apiErrorMessage } from "../globals/constants";
 import { render, wait } from "@testing-library/react";
 
-jest.mock("../api");
+jest.mock("../globals/api");
 
 test("rejected announcements call", async () => {
   API.get.mockRejectedValue();
