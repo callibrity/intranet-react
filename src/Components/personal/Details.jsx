@@ -30,10 +30,16 @@ const infoList = [
   }
 ];
 
-export default function Details({employee}){
+export default function Details({employee, setEmployee}){
 
   const info = infoList.map(({label, data}) => 
-    <InfoItem key={label} label={label} data={employee[data]} />
+    <InfoItem 
+      key={label} 
+      label={label} 
+      data={data}
+      info={employee[data]}
+      setEmployee={setEmployee}
+    />
   );
 
   return(
