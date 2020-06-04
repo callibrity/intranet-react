@@ -29,7 +29,7 @@ function renderApp() {
 function queryForPages(app) {
   return {
     loginPage: app.queryByText(/welcome/i),
-    homePage: app.queryByText(/announcements/i),
+    homePage: app.queryByText(/news/i),
     wikiPage: app.queryByText(/wiki check/i),
     peoplePage: app.queryByText(/cincinnati/i)
   };

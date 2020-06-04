@@ -1,15 +1,15 @@
 // users.test.js
 import React from "react";
 import API from "../globals/api";
-import Announcements from "../Components/home/Announcements";
-import { mockAnnouncementsResponse, apiInitialMessage, apiErrorMessage } from "../globals/constants";
+import News from "../Components/home/News";
+import { mockNewsResponse, apiInitialMessage, apiErrorMessage } from "../globals/constants";
 import { render, wait } from "@testing-library/react";
 
 jest.mock("../globals/api");
 
-test("rejected announcements call", async () => {
+test("rejected news call", async () => {
   API.get.mockRejectedValue();
-  const {queryByText} = render(<Announcements />);
+  const {queryByText} = render(<News />);
 
   expect(queryByText(apiInitialMessage)).toBeInTheDocument();
 
@@ -18,10 +18,10 @@ test("rejected announcements call", async () => {
   expect(API.get.mock.calls.length).toEqual(1);
 });
 
-test("successful announcements call", async () => {
-  API.get.mockResolvedValue(mockAnnouncementsResponse);
-  const {getByText} = render(<Announcements />);
-  const {date, event} = mockAnnouncementsResponse.data[1];
+test("successful news call", async () => {
+  API.get.mockResolvedValue(mockNewsResponse);
+  const {getByText} = render(<News />);
+  const {date, event} = mockNewsResponse.data[1];
 
   await wait(() => expect(getByText(`${date}: ${event}`)).toBeInTheDocument());
 

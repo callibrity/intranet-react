@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 jest.mock("../globals/api");
 
-test("rejected announcements call", async () => {
+test("rejected news call", async () => {
   API.get.mockRejectedValue();
   const {getByText} = render(<Router><People /></Router>);
 

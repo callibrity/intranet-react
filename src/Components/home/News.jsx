@@ -1,7 +1,7 @@
 import React from "react";
 import useAPI from "../../hooks/useAPI";
 
-export function createAnnouncementsList(text) {
+export function createNewsList(text) {
   const typeCheck = typeof text === "string";
   if (typeCheck) {
     return text;
@@ -14,12 +14,12 @@ export function createAnnouncementsList(text) {
   ));
 }
 
-export default function Announcements() {
-  const announcements = useAPI("/announcements");
-  const announcementsList = createAnnouncementsList(announcements);
+export default function News() {
+  const news = useAPI("/news");
+  const newsList = createNewsList(news);
   return (
     <>
-      {announcementsList}
+      {newsList}
     </>
   );
 }

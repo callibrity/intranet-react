@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { ProfileContext } from "../../globals/UserContext";
 
-export default function InfoItem({label, data, info, setEmployee}){
+export default function InfoItem({label, data, info}){
+  const {editMode, setEmployee} = useContext(ProfileContext);
+
   const text = typeof info === "string" || info === undefined ? info
     : info.reduce((str, ele) => `${str}, ${ele}`); 
 
@@ -18,7 +21,7 @@ export default function InfoItem({label, data, info, setEmployee}){
       <Label>{label}</Label>
       <Data 
         value={text} 
-        disabled={false}
+        disabled={!editMode}
         name={data}
         onChange={handleChange}
       />
