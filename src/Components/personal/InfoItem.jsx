@@ -1,13 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function InfoItem({label, data}){
-  const text = typeof data === "string" || data === undefined ? data
-    : data.reduce((str, ele) => `${str}, ${ele}`); 
+export default function InfoItem({label, data, info, setEmployee}){
+  const text = typeof info === "string" || info === undefined ? info
+    : info.reduce((str, ele) => `${str}, ${ele}`); 
+
+  function handleChange(e) {
+    const {value, name} = e.target;
+    const load = {};
+    load[name] = value;
+    setEmployee({type: "update", load});
+  }
+  
+
   return(
     <Container>
       <Label>{label}</Label>
-      <Data>{text}</Data>
+      <Data 
+        value={text} 
+        disabled={false}
+        name={data}
+        onChange={handleChange}
+      />
     </Container>
   );
 }
@@ -22,7 +36,10 @@ const Label = styled.div`
   font-weight: 700;
 `;
 
-const Data = styled.data`
+const Data = styled.input`
   word-wrap: break-word;
   word-break: break-word;
+  border: 0px solid;
+  background-color: white;
+  color: black;
 `;

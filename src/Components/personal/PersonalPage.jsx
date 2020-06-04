@@ -1,25 +1,49 @@
-import React from "react";
+import React, { useReducer, useEffect } from "react";
+import API from "../../globals/api";
 import {parse} from "query-string";
 import styled from "styled-components";
-import useAPI from "../../hooks/useAPI";
 import Summary from "./Summary";
 import Details from "./Details";
 import Header from "./Header";
+import {apiInitialMessage, apiErrorMessage} from "../../globals/constants";
+
+function reducer(state, action) {
+  const {type, load} = action;
+  if(type === "initial"){
+    return load;
+  }
+  if(type === "update") {
+    return {
+      ...state,
+      ...load
+    };
+  }
+}
 
 export default function PersonalPage(){
+  const [employee, setEmployee] = useReducer(reducer, apiInitialMessage);
   const {name} = parse(window.location.search);
-  const employee = useAPI(`/employees?queryName=${name}`);
+
+  useEffect(() => {
+    API.get(`/employees?name=${name}`)
+      .then((res) => {
+        setEmployee({type: "initial", load: res.data[0]});
+      })
+      .catch((err) => {
+        setEmployee(apiErrorMessage);
+      });
+  }, [name]);
 
   return(
     <Container>
       <InnerContainer>
-        <Header />
+        <Header employee={employee}/>
         <LowerContainer>
           <div>
-            <Summary employee={employee[0]}/>
+            <Summary employee={employee} setEmployee={setEmployee}/>
           </div>
           <div>
-            <Details employee={employee[0]}/>
+            <Details employee={employee} setEmployee={setEmployee}/>
           </div>
         </LowerContainer>
       </InnerContainer>

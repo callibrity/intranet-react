@@ -1,12 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import API from "../../globals/api";
 import { standardButton } from "../../globals/styles";
 
-export default function Header(){
+export default function Header({employee}){
+
+  function handleClick(){
+    API.put(`/employees?name=${employee.name}`, employee)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+
   return(
     <Container>
       <Title>RESUME</Title>
-      <EditButton>EDIT RESUME</EditButton>
+      <Button>EDIT RESUME</Button>
+      <Button onClick={handleClick}>Save RESUME</Button>
     </Container>
   );
 }
@@ -24,6 +33,6 @@ const Title = styled.div`
   margin-right: 50px;
 `;
 
-const EditButton = styled.div`
+const Button = styled.div`
   ${standardButton}
 `;
