@@ -24,8 +24,8 @@ export default function Header(){
     if(employee.callibrity_email === userEmail){
       return(
         <>
-          <Button onClick={handleEditClick}>{editMode ? "Cancel Editing" : "Edit Resume"}</Button>
-          {editMode && <Button onClick={handleSaveClick}>Save Resume</Button>}
+          <Button onClick={handleEditClick}>{editMode ? "Cancel Editing" : "Edit Profile"}</Button>
+          {editMode && <Button onClick={handleSaveClick}>Save Profile</Button>}
         </>
       );
     } else return null;
@@ -33,7 +33,6 @@ export default function Header(){
 
   return(
     <Container>
-      <Title>RESUME</Title>
       {editButtons()}
     </Container>
   );
