@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import API from "../../globals/api";
 import { standardButton } from "../../globals/styles";
+import { UserContext } from "../../globals/UserContext";
 
 export default function Header({employee}){
+  const { userEmail } = useContext(UserContext);
 
   function handleClick(){
     API.put(`/employees?name=${employee.name}`, employee)
@@ -11,11 +13,21 @@ export default function Header({employee}){
       .catch((err) => console.log(err));
   }
 
+  function EditButtons() {
+    if(employee.callibrity_email === userEmail){
+      return(
+        <>
+          <Button>Edit Resume</Button>
+          <Button onClick={handleClick}>Save Resume</Button>
+        </>
+      );
+    } else return null;
+  }
+
   return(
     <Container>
       <Title>RESUME</Title>
-      <Button>EDIT RESUME</Button>
-      <Button onClick={handleClick}>Save RESUME</Button>
+      <EditButtons />
     </Container>
   );
 }
