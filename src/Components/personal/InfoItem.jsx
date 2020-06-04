@@ -6,9 +6,9 @@ export default function InfoItem({label, data, info, setEmployee}){
     : info.reduce((str, ele) => `${str}, ${ele}`); 
 
   function handleChange(e) {
-    const {value, name} = e.target;
+    const {value, label} = e.target;
     const load = {};
-    load[name] = value;
+    load[label] = value;
     setEmployee({type: "update", load});
   }
   
@@ -19,7 +19,7 @@ export default function InfoItem({label, data, info, setEmployee}){
       <Data 
         value={text} 
         disabled={false}
-        name={data}
+        label={data}
         onChange={handleChange}
       />
     </Container>
