@@ -2,23 +2,30 @@ import React, {useContext} from "react";
 import styled from "styled-components";
 import API from "../../globals/api";
 import { standardButton } from "../../globals/styles";
-import { UserContext } from "../../globals/UserContext";
+import { UserContext, ProfileContext } from "../../globals/UserContext";
 
-export default function Header({employee}){
+export default function Header(){
   const { userEmail } = useContext(UserContext);
+  const {employee, editMode, setEditMode} = useContext(ProfileContext);
 
-  function handleClick(){
+  function handleEditClick(){
+    setEditMode(!editMode);
+  }
+  
+  function handleSaveClick(){
     API.put(`/employees?name=${employee.name}`, employee)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    
+    setEditMode(false);
   }
 
-  function EditButtons() {
+  function editButtons() {
     if(employee.callibrity_email === userEmail){
       return(
         <>
-          <Button>Edit Resume</Button>
-          <Button onClick={handleClick}>Save Resume</Button>
+          <Button onClick={handleEditClick}>{editMode ? "Cancel Editing" : "Edit Resume"}</Button>
+          {editMode && <Button onClick={handleSaveClick}>Save Resume</Button>}
         </>
       );
     } else return null;
@@ -27,7 +34,7 @@ export default function Header({employee}){
   return(
     <Container>
       <Title>RESUME</Title>
-      <EditButtons />
+      {editButtons()}
     </Container>
   );
 }

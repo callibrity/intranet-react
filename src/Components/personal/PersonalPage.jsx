@@ -1,53 +1,59 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import API from "../../globals/api";
-import {parse} from "query-string";
+import { parse } from "query-string";
 import styled from "styled-components";
 import Summary from "./Summary";
 import Details from "./Details";
 import Header from "./Header";
-import {apiInitialMessage, apiErrorMessage} from "../../globals/constants";
+import { apiInitialMessage, apiErrorMessage } from "../../globals/constants";
+import { ProfileContext } from "../../globals/UserContext";
 
 function reducer(state, action) {
-  const {type, load} = action;
-  if(type === "initial"){
+  const { type, load } = action;
+  if (type === "initial") {
     return load;
   }
-  if(type === "update") {
+  if (type === "update") {
     return {
       ...state,
-      ...load
+      ...load,
     };
   }
 }
 
-export default function PersonalPage(){
+export default function PersonalPage() {
+  const [editMode, setEditMode] = useState(false);
   const [employee, setEmployee] = useReducer(reducer, apiInitialMessage);
-  const {name} = parse(window.location.search);
+  const { name } = parse(window.location.search);
+
+  const profileInfo = { employee, setEmployee, editMode, setEditMode };
 
   useEffect(() => {
     API.get(`/employees?name=${name}`)
       .then((res) => {
-        setEmployee({type: "initial", load: res.data[0]});
+        setEmployee({ type: "initial", load: res.data[0] });
       })
       .catch((err) => {
         setEmployee(apiErrorMessage);
       });
-  }, [name]);
+  }, [name, editMode]);
 
-  return(
-    <Container>
-      <InnerContainer>
-        <Header employee={employee}/>
-        <LowerContainer>
-          <div>
-            <Summary employee={employee} setEmployee={setEmployee}/>
-          </div>
-          <div>
-            <Details employee={employee} setEmployee={setEmployee}/>
-          </div>
-        </LowerContainer>
-      </InnerContainer>
-    </Container>
+  return (
+    <ProfileContext.Provider value={profileInfo}>
+      <Container>
+        <InnerContainer>
+          <Header/>
+          <LowerContainer>
+            <div>
+              <Summary />
+            </div>
+            <div>
+              <Details />
+            </div>
+          </LowerContainer>
+        </InnerContainer>
+      </Container>
+    </ProfileContext.Provider>
   );
 }
 
