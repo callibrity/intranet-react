@@ -45,12 +45,6 @@ const Container = styled.div`
   padding: 20px 0;
 `;
 
-const Title = styled.div`
-  font-size: 30px;
-  font-weight: 900;
-  margin-right: 50px;
-`;
-
 const Button = styled.div`
   ${standardButton};
   font-size: 16px;
