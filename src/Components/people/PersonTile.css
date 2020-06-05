@@ -9,16 +9,19 @@
   width: 250px;
   bottom: -1px;
   margin-left: -1px;
-  background-color: lightblue;
+  background-color: #4ab452;
+  opacity: .9;
   text-align: center;
   padding: 5px;
   font-size: small;
   border-bottom-left-radius: .25rem;
   border-bottom-right-radius: .25rem;
+  color: white;
+
 }
 
 .tile-overlay-name {
   display: inline-block;
   font-size: large;
-  padding-bottom: 5px;
+  padding-bottom: 0;
 }

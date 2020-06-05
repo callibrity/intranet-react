@@ -24,8 +24,8 @@ export default function Header(){
     if(employee.callibrity_email === userEmail){
       return(
         <>
-          <Button onClick={handleEditClick}>{editMode ? "Cancel Editing" : "Edit Resume"}</Button>
-          {editMode && <Button onClick={handleSaveClick}>Save Resume</Button>}
+          <Button onClick={handleEditClick}>{editMode ? "Cancel Editing" : "Edit Profile"}</Button>
+          {editMode && <Button onClick={handleSaveClick}>Save Profile</Button>}
         </>
       );
     } else return null;
@@ -33,7 +33,6 @@ export default function Header(){
 
   return(
     <Container>
-      <Title>RESUME</Title>
       {editButtons()}
     </Container>
   );
@@ -46,12 +45,9 @@ const Container = styled.div`
   padding: 20px 0;
 `;
 
-const Title = styled.div`
-  font-size: 30px;
-  font-weight: 900;
-  margin-right: 50px;
-`;
-
 const Button = styled.div`
-  ${standardButton}
+  ${standardButton};
+  font-size: 16px;
+  padding: 3px 5px;
+  margin-right: 20px;
 `;
